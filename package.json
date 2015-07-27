@@ -1,0 +1,18 @@
+{
+  "name": "react-scrollspy",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "makotot",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.8.0",
+    "browserify": "^11.0.0",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "reactify": "^1.1.1"
+  }
+}
