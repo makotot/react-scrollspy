@@ -2,8 +2,10 @@ var React = require('react'),
   Scrollspy = require('./lib/Scrollspy.jsx');
 
 var ScrollspyWrapper = Scrollspy.Wrapper,
+  ScrollspyContents = Scrollspy.Contents,
   ScrollspyContent = Scrollspy.Content,
-  ScrollspyNav = Scrollspy.nav;
+  ScrollspyNav = Scrollspy.Nav,
+  ScrollspyNavitem = Scrollspy.Navitem;
 
 
 var App = React.createClass({
@@ -11,34 +13,40 @@ var App = React.createClass({
   render () {
 
     var style = {
-      height: '500px'
+      height: '300px'
     };
 
     return (
       <ScrollspyWrapper>
 
-        <ScrollspyContent>
+        <ScrollspyContents>
 
-          <section style={ style } id="section-1">
-            section 1
-          </section>
-          <section style={ style } id="section-2">
-            section 2
-          </section>
-          <section style={ style } id="section-3">
-            section 3
-          </section>
+          <ScrollspyContent contentId="section-1">
+            <div style={ style }>
+              section 1
+            </div>
+          </ScrollspyContent>
 
-        </ScrollspyContent>
+          <ScrollspyContent contentId="section-2">
+            <div style={ style }>
+              section 2
+            </div>
+          </ScrollspyContent>
+
+          <ScrollspyContent contentId="section-3">
+            <div style={ style }>
+              section 3
+            </div>
+          </ScrollspyContent>
+
+        </ScrollspyContents>
 
         <ScrollspyNav>
-          <nav>
-            <ul>
-              <li><a href="#section-1">section 1</a></li>
-              <li><a href="#section-2">section 2</a></li>
-              <li><a href="#section-3">section 3</a></li>
-            </ul>
-          </nav>
+
+          <ScrollspyNavitem targetId="section-1">section 1</ScrollspyNavitem>
+          <ScrollspyNavitem targetId="section-2">section 2</ScrollspyNavitem>
+          <ScrollspyNavitem targetId="section-3">section 3</ScrollspyNavitem>
+
         </ScrollspyNav>
 
       </ScrollspyWrapper>
@@ -48,4 +56,3 @@ var App = React.createClass({
 
 
 React.render(<App />, document.getElementById('js-app'));
-

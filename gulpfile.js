@@ -49,7 +49,7 @@ gulp.task('serve', function () {
     .on('change', browserSync.reload);
 
   gulp.watch(['./src/templates/*.ejs'], ['template']);
-  gulp.watch(['./src/js/**/*.jsx'], ['script']);
+  gulp.watch(['./src/js/**/*.jsx', './src/js/**/*.js'], ['script']);
 });
 
 gulp.task('default', ['clean'], function () {
