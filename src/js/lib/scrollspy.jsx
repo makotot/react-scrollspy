@@ -1,17 +1,20 @@
-var React = require('react');
+var React = require('react'),
+  spy = require('./helpers/spy');
 
-var inViewport = require('./helpers/in-viewport');
 
 var Scrollspy = {};
 
 
 Scrollspy.Wrapper = React.createClass({
 
-  getInitialState: function () {
+  mixins: [spy],
 
-    return {
-      elsInView: []
-    };
+  componentDidMount: function () {
+    this._mountSpyEvent();
+  },
+
+  componentWillUnmount: function () {
+    this._unmountSpyEvent();
   },
 
   render: function () {
@@ -23,162 +26,56 @@ Scrollspy.Wrapper = React.createClass({
 });
 
 
-Scrollspy.Contents = React.createClass({
+Scrollspy.Content = React.createClass({
 
-  mixins: [inViewport],
+  mixins: [spy],
 
   getInitialState: function () {
 
     return {
-      contents: []
+      store: 0,
+      isInView: false
     };
   },
 
-  setContents: function () {
-    var contents = [];
-
-    React.Children.forEach(this.props.children, function (child) {
-      contents.push(child.props.contentId);
-    });
-
-    this.setState({
-      contents: contents
-    });
-  },
-
-  componentWillMount: function () {
-    this.setContents();
-  },
-
   componentDidMount: function () {
-    this.createTargetDOMs();
-    window.addEventListener('scroll', this.spy);
+    this._mountUpdateEvent();
   },
 
   componentWillUnmount: function () {
-    window.removeEventListener('scroll', this.spy);
-  },
-
-  componentWillUpdate: function () {
-  },
-
-  createTargetDOMs: function () {
-    var els = [];
-
-    for (var i = 0, max = this.state.contents.length; i < max; i++) {
-      els.push((this.refs[this.state.contents[0]]).getDOMNode());
-    }
-    console.log(els)
-  },
-
-  spy: function () {
-    console.log(this.isInViewport(this.state.contents));
+    this._unmountUpdateEvent();
   },
 
   render: function () {
-    var self = this;
-
-    var children = React.Children.map(this.props.children, function (child, index) {
-      return React.cloneElement(child, {
-        ref: self.state.contents[index]
-      });
-    });
+    var style = {
+      position: 'fixed',
+      top: 0
+    };
 
     return (
-      <div>{ children }</div>
-    );
-  }
-});
-
-
-Scrollspy.Content = React.createClass({
-
-  render: function () {
-
-    return (
-      <div id={ this.props.contentId }>
+      <div>
+        <div style={ style }>{ this.state.store }</div>
         { this.props.children }
       </div>
     );
   }
 });
 
-
-Scrollspy.Nav = React.createClass({
+Scrollspy.Navitem = React.createClass({
 
   getInitialState: function () {
 
     return {
-      navs: []
+      isActiveNav: false
     };
   },
 
-  setNavs: function () {
-    var navs = [];
-
-    React.Children.forEach(this.props.children, function (child) {
-      navs.push(child.props.targetId);
-    });
-
-    this.setState({
-      navs: navs
-    });
-  },
-
-  componentWillMount: function () {
-    this.setNavs();
-  },
-
-  componentDidMount: function () {
-    this.createTargetDOMs();
-    window.addEventListener('scroll', this.spy);
-  },
-
-  componentWillUnmount () {
-    window.removeEventListener('scroll', this.spy);
-  },
-
-  createTargetDOMs: function () {
-    var els = [];
-
-    for (var i = 0, max = this.state.navs.length; i < max; i++) {
-      els.push((this.refs[this.state.navs[0]]).getDOMNode());
-    }
-    console.log(els)
-  },
-
-  spy: function () {
-  },
-
-  render: function () {
-    var self = this;
-
-    var children = React.Children.map(this.props.children, function (child, index) {
-      return React.cloneElement(child, {
-        ref: self.state.navs[index]
-      });
-    });
-
-    return (
-      <ul>{ children }</ul>
-    );
-  }
-});
-
-
-Scrollspy.Navitem = React.createClass({
-
   render: function () {
 
     return (
-      <li>
-        <a href={ '#' + this.props.targetId }>
-          { this.props.children }
-        </a>
-      </li>
+      <a href={ '#' + this.props.targetId }>{ this.props.children }</a>
     );
   }
 });
-
 
 module.exports = Scrollspy;

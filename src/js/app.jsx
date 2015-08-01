@@ -1,10 +1,10 @@
 var React = require('react'),
   Scrollspy = require('./lib/Scrollspy.jsx');
 
+//var ScrollspyContents = Scrollspy.Contents,
 var ScrollspyWrapper = Scrollspy.Wrapper,
-  ScrollspyContents = Scrollspy.Contents,
   ScrollspyContent = Scrollspy.Content,
-  ScrollspyNav = Scrollspy.Nav,
+//  ScrollspyNav = Scrollspy.Nav,
   ScrollspyNavitem = Scrollspy.Navitem;
 
 
@@ -18,8 +18,7 @@ var App = React.createClass({
 
     return (
       <ScrollspyWrapper>
-
-        <ScrollspyContents>
+        <div>
 
           <ScrollspyContent contentId="section-1">
             <div style={ style }>
@@ -39,15 +38,22 @@ var App = React.createClass({
             </div>
           </ScrollspyContent>
 
-        </ScrollspyContents>
+          <ScrollspyContent contentId="section-4">
+            <div style={ style }>
+              section 4
+            </div>
+          </ScrollspyContent>
 
-        <ScrollspyNav>
+        </div>
+
+        <nav>
 
           <ScrollspyNavitem targetId="section-1">section 1</ScrollspyNavitem>
           <ScrollspyNavitem targetId="section-2">section 2</ScrollspyNavitem>
           <ScrollspyNavitem targetId="section-3">section 3</ScrollspyNavitem>
+          <ScrollspyNavitem targetId="section-4">section 4</ScrollspyNavitem>
 
-        </ScrollspyNav>
+        </nav>
 
       </ScrollspyWrapper>
     );
