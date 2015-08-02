@@ -22,8 +22,17 @@ module.exports = {
   },
 
   _detectInView: function () {
-
     this._setStore(document.body.scrollTop);
+  },
+
+  _isInView: function (el) {
+    var winH = win.innerHeight,
+      scrollTop = document.body.scrollTop,
+      scrollBottom = scrollTop + winH,
+      elTop = el.offsetTop,
+      elBottom = elTop + el.offsetHeight;
+
+    return (elTop < scrollBottom) && (elBottom > scrollTop);
   },
 
   _setStore: function (pos) {
