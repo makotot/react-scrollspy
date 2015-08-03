@@ -4,76 +4,61 @@ var React = require('react'),
 
 var Scrollspy = {};
 
-
-Scrollspy.Wrapper = React.createClass({
-
-  mixins: [spy],
-
-  componentDidMount: function () {
-    this._mountSpyEvent();
-  },
-
-  componentWillUnmount: function () {
-    this._unmountSpyEvent();
-  },
-
-  render: function () {
-
-    return (
-      <div>{ this.props.children }</div>
-    );
-  }
-});
+var win = window;
 
 
-Scrollspy.Content = React.createClass({
+Scrollspy = React.createClass({
 
   mixins: [spy],
+
+  propTypes: {
+    items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+    currentClassName: React.PropTypes.string.isRequired
+  },
 
   getInitialState: function () {
 
     return {
-      store: 0,
-      isInView: false
+      targetItems: [],
+      inViewState: []
     };
   },
 
   componentDidMount: function () {
-    this._mountUpdateEvent();
+    var targetItems = this._initSpyTarget(this.props.items);
+
+    this.setState({
+      targetItems: targetItems
+    });
+
+    this._spy(targetItems);
+
+    win.addEventListener('scroll', this.handleSpy);
   },
 
   componentWillUnmount: function () {
-    this._unmountUpdateEvent();
+    win.removeEventListener('scroll', this.handleSpy);
+  },
+
+  handleSpy: function () {
+    this._spy();
   },
 
   render: function () {
-    var style = {
-      position: 'fixed',
-      top: 0
-    };
+    var items = this.props.children.map(function (child, idx) {
+
+      return React.cloneElement(child, {
+        className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : '')
+      });
+
+    }.bind(this));
 
     return (
-      <div>
-        <div style={ style }>{ this.state.store }</div>
-        { this.props.children }
-      </div>
-    );
-  }
-});
-
-Scrollspy.Navitem = React.createClass({
-
-  getInitialState: function () {
-
-    return {
-      isActiveNav: false
-    };
-  },
-
-  render: function () {
-
-    return (
-      <a href={ '#' + this.props.targetId }>{ this.props.children }</a>
+      <nav>
+        <ul className={ this.props.className ? this.props.className : '' }>
+          { items }
+        </ul>
+      </nav>
     );
   }
 });

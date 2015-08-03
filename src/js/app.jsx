@@ -1,13 +1,6 @@
 var React = require('react'),
   Scrollspy = require('./lib/Scrollspy.jsx');
 
-//var ScrollspyContents = Scrollspy.Contents,
-var ScrollspyWrapper = Scrollspy.Wrapper,
-  ScrollspyContent = Scrollspy.Content,
-//  ScrollspyNav = Scrollspy.Nav,
-  ScrollspyNavitem = Scrollspy.Navitem;
-
-
 var App = React.createClass({
 
   render () {
@@ -17,45 +10,19 @@ var App = React.createClass({
     };
 
     return (
-      <ScrollspyWrapper>
-        <div>
+      <div>
 
-          <ScrollspyContent contentId="section-1">
-            <div style={ style }>
-              section 1
-            </div>
-          </ScrollspyContent>
+        <section style={ style } id="section-1">section 1</section>
+        <section style={ style } id="section-2">section 2</section>
+        <section style={ style } id="section-3">section 3</section>
 
-          <ScrollspyContent contentId="section-2">
-            <div style={ style }>
-              section 2
-            </div>
-          </ScrollspyContent>
+        <Scrollspy items={['section-1', 'section-2', 'section-3']} currentClassName="is-current" className="spy-list">
+          <li><a href="#section-1">section 1</a></li>
+          <li><a href="#section-2">section 2</a></li>
+          <li><a href="#section-3">section 3</a></li>
+        </Scrollspy>
 
-          <ScrollspyContent contentId="section-3">
-            <div style={ style }>
-              section 3
-            </div>
-          </ScrollspyContent>
-
-          <ScrollspyContent contentId="section-4">
-            <div style={ style }>
-              section 4
-            </div>
-          </ScrollspyContent>
-
-        </div>
-
-        <nav>
-
-          <ScrollspyNavitem targetId="section-1">section 1</ScrollspyNavitem>
-          <ScrollspyNavitem targetId="section-2">section 2</ScrollspyNavitem>
-          <ScrollspyNavitem targetId="section-3">section 3</ScrollspyNavitem>
-          <ScrollspyNavitem targetId="section-4">section 4</ScrollspyNavitem>
-
-        </nav>
-
-      </ScrollspyWrapper>
+      </div>
     );
   }
 });

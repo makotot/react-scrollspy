@@ -5,7 +5,8 @@ var gulp = require('gulp'),
   source = require('vinyl-source-stream'),
   browserify = require('browserify'),
   reactify = require('reactify'),
-  ejs = require('gulp-ejs');
+  ejs = require('gulp-ejs'),
+  sass = require('gulp-sass');
 
 
 gulp.task('clean', function (done) {
@@ -32,12 +33,21 @@ gulp.task('script', function () {
     .pipe(browserSync.stream());
 });
 
+gulp.task('css', function () {
 
-gulp.task('compile', ['template', 'script']);
+  return gulp
+    .src('./src/scss/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.stream());
+});
+
+
+gulp.task('compile', ['template', 'script', 'css']);
 
 gulp.task('serve', function () {
 
-  runSequence('clean', 'template', 'script', function () {
+  runSequence('clean', 'template', 'script', 'css', function () {
     browserSync.init({
       server: './build',
       open: false
@@ -50,6 +60,7 @@ gulp.task('serve', function () {
 
   gulp.watch(['./src/templates/*.ejs'], ['template']);
   gulp.watch(['./src/js/**/*.jsx', './src/js/**/*.js'], ['script']);
+  gulp.watch(['./src/scss/**/*.scss'], ['css']);
 });
 
 gulp.task('default', ['clean'], function () {

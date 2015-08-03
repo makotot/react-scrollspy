@@ -14,6 +14,7 @@
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-ejs": "^1.1.1",
+    "gulp-sass": "^2.0.4",
     "reactify": "^1.1.1",
     "run-sequence": "^1.1.2",
     "vinyl-source-stream": "^1.1.0"

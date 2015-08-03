@@ -1,33 +1,50 @@
 var win = window,
-  store = 0;
+  doc = document;
 
 module.exports = {
 
-  _mountSpyEvent: function () {
+  _initSpyTarget: function (items) {
+    var targetItems = items.map(function (item) {
 
-    win.addEventListener('scroll', this._detectInView);
+      return doc.getElementById(item);
+    });
+
+    return targetItems;
   },
 
-  _unmountSpyEvent: function () {
+  _getElemsViewState: function (targets) {
+    var elemsInView = [],
+      elemsOutView = [],
+      viewStatusList = [];
 
-    win.removeEventListener('scroll', this._detectInView);
-  },
+    var targetItems = targets ? targets : this.state.targetItems;
 
-  _mountUpdateEvent: function () {
-    win.addEventListener('scroll', this._getStore);
-  },
+    var hasInViewAlready = false;
 
-  _unmountUpdateEvent: function () {
-    win.removeEventListener('scroll', this._getStore);
-  },
+    for (var i = 0, max = targetItems.length; i < max; i++) {
+      var currentContent = targetItems[i],
+        isInView = hasInViewAlready ? false : this._isInView(currentContent);
 
-  _detectInView: function () {
-    this._setStore(document.body.scrollTop);
+      if (isInView) {
+        hasInViewAlready = true;
+        elemsInView.push(currentContent);
+      } else {
+        elemsOutView.push(currentContent);
+      }
+
+      viewStatusList.push(isInView);
+    }
+
+    return {
+      inView: elemsInView,
+      outView: elemsOutView,
+      viewStatusList: viewStatusList
+    };
   },
 
   _isInView: function (el) {
     var winH = win.innerHeight,
-      scrollTop = document.body.scrollTop,
+      scrollTop = doc.body.scrollTop,
       scrollBottom = scrollTop + winH,
       elTop = el.offsetTop,
       elBottom = elTop + el.offsetHeight;
@@ -35,13 +52,9 @@ module.exports = {
     return (elTop < scrollBottom) && (elBottom > scrollTop);
   },
 
-  _setStore: function (pos) {
-    store = pos;
-  },
-
-  _getStore: function () {
+  _spy: function (targets) {
     this.setState({
-      store: store
+      inViewState: this._getElemsViewState(targets).viewStatusList
     });
   }
 };
