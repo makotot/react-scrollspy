@@ -22,22 +22,6 @@ Scrollspy = React.createClass({
     };
   },
 
-  componentDidMount: function () {
-    var targetItems = this._initSpyTarget(this.props.items);
-
-    this.setState({
-      targetItems: targetItems
-    });
-
-    this._spy(targetItems);
-
-    win.addEventListener('scroll', this._handleSpy);
-  },
-
-  componentWillUnmount: function () {
-    win.removeEventListener('scroll', this._handleSpy);
-  },
-
   _initSpyTarget: function (items) {
     var targetItems = items.map(function (item) {
 
@@ -97,6 +81,22 @@ Scrollspy = React.createClass({
     this._spy();
   },
 
+  componentDidMount: function () {
+    var targetItems = this._initSpyTarget(this.props.items);
+
+    this.setState({
+      targetItems: targetItems
+    });
+
+    this._spy(targetItems);
+
+    win.addEventListener('scroll', this._handleSpy);
+  },
+
+  componentWillUnmount: function () {
+    win.removeEventListener('scroll', this._handleSpy);
+  },
+
   render: function () {
     var items = this.props.children.map(function (child, idx) {
 
@@ -117,4 +117,3 @@ Scrollspy = React.createClass({
 });
 
 module.exports = Scrollspy;
-
