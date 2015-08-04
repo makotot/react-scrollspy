@@ -12,9 +12,11 @@ var App = React.createClass({
     return (
       <div>
 
-        <section style={ style } id="section-1">section 1</section>
-        <section style={ style } id="section-2">section 2</section>
-        <section style={ style } id="section-3">section 3</section>
+        <div>
+          <section style={ style } id="section-1">section 1</section>
+          <section style={ style } id="section-2">section 2</section>
+          <section style={ style } id="section-3">section 3</section>
+        </div>
 
         <Scrollspy items={['section-1', 'section-2', 'section-3']} currentClassName="is-current" className="spy-list">
           <li><a href="#section-1">section 1</a></li>
