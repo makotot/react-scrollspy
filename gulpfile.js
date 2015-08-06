@@ -6,12 +6,22 @@ var gulp = require('gulp'),
   browserify = require('browserify'),
   reactify = require('reactify'),
   ejs = require('gulp-ejs'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  eslint = require('gulp-eslint');
 
 
 gulp.task('clean', function (done) {
 
   del(['./build'], done);
+});
+
+gulp.task('lint', function () {
+
+  gulp
+    .src(['./src/js/**/*.js', './src/js/**/*.jsx'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('template', function () {
@@ -47,7 +57,7 @@ gulp.task('compile', ['template', 'script', 'css']);
 
 gulp.task('serve', function () {
 
-  runSequence('clean', 'template', 'script', 'css', function () {
+  runSequence('clean', 'lint', 'template', 'script', 'css', function () {
     browserSync.init({
       server: './build',
       open: false
@@ -63,5 +73,5 @@ gulp.task('serve', function () {
   gulp.watch(['./src/scss/**/*.scss'], ['css']);
 });
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean', 'lint'], function () {
 });
