@@ -1,6 +1,11 @@
 @charset "utf-8";
 
+* {
+  box-sizing: border-box;
+}
+
 body  {
+  background-color: #fff;
   color: #444;
   font-size: 13px;
   font-family: helvetica, arial, sans-serif;
@@ -10,3 +15,8 @@ ul,
 ol {
   list-style-type: none;
 }
+
+a {
+  color: #346cc1;
+}
+
