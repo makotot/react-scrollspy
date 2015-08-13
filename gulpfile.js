@@ -57,7 +57,7 @@ gulp.task('compile', ['template', 'script', 'css']);
 
 gulp.task('serve', function () {
 
-  runSequence('clean', 'lint', 'template', 'script', 'css', function () {
+  runSequence('clean', 'lint', 'compile', function () {
     browserSync.init({
       server: './build',
       open: false
@@ -73,5 +73,11 @@ gulp.task('serve', function () {
   gulp.watch(['./src/scss/**/*.scss'], ['css']);
 });
 
+gulp.task('build', function () {
+  runSequence('clean', 'lint', 'compile', function () {
+  });
+});
+
 gulp.task('default', ['clean', 'lint'], function () {
 });
+
