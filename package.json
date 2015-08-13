@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "",
+    "serve": "gulp serve",
+    "lint": "gulp lint"
   },
   "author": "makotot",
   "license": "MIT",
