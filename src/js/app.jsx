@@ -18,11 +18,13 @@ var App = React.createClass({
           <section style={ style } id="section-3">section 3</section>
         </div>
 
-        <Scrollspy items={['section-1', 'section-2', 'section-3']} currentClassName="is-current" className="spy-list">
-          <li><a href="#section-1">section 1</a></li>
-          <li><a href="#section-2">section 2</a></li>
-          <li><a href="#section-3">section 3</a></li>
-        </Scrollspy>
+        <div className="nav-list-wrapper">
+          <Scrollspy items={['section-1', 'section-2', 'section-3']} currentClassName="is-current" className="nav-list">
+            <li><a href="#section-1">section 1</a></li>
+            <li><a href="#section-2">section 2</a></li>
+            <li><a href="#section-3">section 3</a></li>
+          </Scrollspy>
+        </div>
 
       </div>
     );
