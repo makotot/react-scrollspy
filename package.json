@@ -1,8 +1,8 @@
 {
   "name": "react-scrollspy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "./src/js/lib/scrollspy.jsx",
   "scripts": {
     "test": "",
     "serve": "gulp serve",
@@ -27,5 +27,10 @@
   "dependencies": {
     "react": "^0.13.3",
     "react-style": "^0.5.5"
-  }
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "scrollspy"
+  ]
 }
