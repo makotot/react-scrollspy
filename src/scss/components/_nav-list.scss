@@ -5,5 +5,8 @@
 }
 
 .is-current {
-  font-weight: bold;
+
+  > a {
+    font-weight: bold;
+  }
 }
