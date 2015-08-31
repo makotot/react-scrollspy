@@ -5,6 +5,8 @@
 [![DevDependencies](http://img.shields.io/david/dev/makotot/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
 [![License](http://img.shields.io/npm/l/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
 
+> Scrollspy component
+
 
 ## Install
 
@@ -35,6 +37,27 @@ var Scrollspy = require('react-scrollspy');
   </Scrollspy>
 
 </div>
+```
+
+
+## Props
+
+### `items={Array}`
+
+The id list of target contents.
+
+### `currentClassName={String}`
+
+The class name that apply to the elements in viewport.
+
+
+## Development
+
+```sh
+$ git clone https://github.com/makotot/react-scrollspy.git
+$ cd react-scrollspy
+$ npm i
+$ gulp serve
 ```
 
 
