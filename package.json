@@ -1,6 +1,6 @@
 {
   "name": "react-scrollspy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react scrollspy component",
   "main": "./src/js/lib/scrollspy.jsx",
   "scripts": {
