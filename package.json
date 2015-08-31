@@ -8,6 +8,10 @@
     "serve": "gulp serve",
     "lint": "gulp lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makotot/react-scrollspy.git"
+  },
   "author": "makotot",
   "license": "MIT",
   "devDependencies": {
