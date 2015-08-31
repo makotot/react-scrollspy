@@ -1,4 +1,5 @@
 {
+  "extends": "eslint-config-makotot",
   "ecmaFeatures": {
     "jsx": true
   },
