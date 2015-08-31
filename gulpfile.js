@@ -12,7 +12,9 @@ var gulp = require('gulp'),
 
 gulp.task('clean', function (done) {
 
-  del(['./build'], done);
+  del(['./build']).then(function () {
+    done();
+  });
 });
 
 gulp.task('lint', function () {
