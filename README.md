@@ -48,7 +48,7 @@ The id list of target contents.
 
 ### `currentClassName={String}`
 
-The class name that apply to the elements in viewport.
+The class name that apply to the navigation element paired with the content element in viewport.
 
 
 ## Development
