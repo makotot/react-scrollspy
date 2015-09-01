@@ -78,7 +78,13 @@ Scrollspy = React.createClass({
   },
 
   _handleSpy: function () {
-    this._spy();
+    var timer;
+
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    timer = setTimeout(this._spy, 100);
   },
 
   componentDidMount: function () {
