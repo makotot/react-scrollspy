@@ -2,16 +2,16 @@
   "name": "react-scrollspy",
   "version": "0.1.1",
   "description": "react scrollspy component",
-  "main": "./build/js/scrollspy.js",
+  "main": "./scrollspy.js",
   "files": [
     "README.md",
-    "./build/js/scrollspy.js",
+    "scrollspy.js",
     "package.json",
     "gulpfile.js",
     ".eslintrc"
   ],
   "scripts": {
-    "build": "./node_modules/react-tools/bin/jsx ./src/js/lib/scrollspy.jsx > ./build/js/scrollspy.js",
+    "build": "./node_modules/react-tools/bin/jsx ./src/js/lib/scrollspy.jsx > ./scrollspy.js",
     "prepublish": "npm run build",
     "serve": "gulp serve",
     "lint": "gulp lint"
