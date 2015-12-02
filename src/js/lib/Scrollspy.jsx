@@ -63,7 +63,7 @@ Scrollspy = React.createClass({
 
   _isInView: function (el) {
     var winH = win.innerHeight,
-      scrollTop = doc.body.scrollTop,
+      scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop,
       scrollBottom = scrollTop + winH,
       elTop = el.offsetTop,
       elBottom = elTop + el.offsetHeight;
