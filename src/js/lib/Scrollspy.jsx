@@ -104,10 +104,12 @@ Scrollspy = React.createClass({
   },
 
   render: function () {
-    var items = this.props.children.map(function (child, idx) {
+    var counter = 0,
+      items = this.props.children.map(function (child, idx) {
 
       return React.cloneElement(child, {
-        className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : '')
+        className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : ''),
+        key: counter++
       });
 
     }.bind(this));
