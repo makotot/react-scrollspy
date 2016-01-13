@@ -23,26 +23,27 @@
   "author": "makotot",
   "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.9.10",
-    "browserify": "^11.2.0",
-    "del": "^2.0.2",
-    "eslint-config-makotot": "0.0.2",
+    "browser-sync": "^2.11.0",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "eslint-config-makotot": "0.0.6",
     "eslint-plugin-react": "^3.5.1",
     "gulp": "^3.9.0",
-    "gulp-ejs": "^1.2.1",
+    "gulp-ejs": "^1.2.2",
     "gulp-eslint": "^1.0.0",
-    "gulp-sass": "^2.0.4",
+    "gulp-sass": "^2.1.1",
     "react-tools": "^0.13.3",
     "reactify": "^1.1.1",
     "run-sequence": "^1.1.4",
     "vinyl-source-stream": "^1.1.0"
   },
-  "dependencies": {
-    "react": "^0.13.3"
+  "peerDependencies": {
+    "react": ">=0.13.3"
   },
   "keywords": [
     "react",
     "react-component",
-    "scrollspy"
+    "scrollspy",
+    "scroll"
   ]
 }
