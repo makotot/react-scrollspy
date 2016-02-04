@@ -4,7 +4,7 @@ var gulp = require('gulp'),
   runSequence = require('run-sequence'),
   source = require('vinyl-source-stream'),
   browserify = require('browserify'),
-  reactify = require('reactify'),
+  babelify = require('babelify'),
   ejs = require('gulp-ejs'),
   sass = require('gulp-sass'),
   eslint = require('gulp-eslint');
@@ -38,7 +38,7 @@ gulp.task('script', function () {
   return browserify({
       entries: ['src/js/app.jsx']
     })
-    .transform([reactify])
+    .transform([babelify])
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('./build/js'))
@@ -59,7 +59,7 @@ gulp.task('compile', ['template', 'script', 'css']);
 
 gulp.task('serve', function () {
 
-  runSequence('clean', 'lint', 'compile', function () {
+  runSequence('clean', 'compile', function () {
     browserSync.init({
       server: './build',
       open: false

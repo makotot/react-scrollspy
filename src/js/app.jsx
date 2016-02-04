@@ -1,18 +1,19 @@
-var React = require('react'),
-  Scrollspy = require('./lib/Scrollspy.jsx');
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Scrollspy } from './lib/Scrollspy.jsx'
 
-var App = React.createClass({
+const App = React.createClass({
 
   render () {
 
-    var style = {
-      height: '900px'
-    };
+    const style = {
+      height: '900px',
+    }
 
-    var nestedStyle = {
+    const nestedStyle = {
       height: '300px',
-      padding: '0 20px'
-    };
+      padding: '0 20px',
+    }
 
     return (
       <div>
@@ -49,9 +50,9 @@ var App = React.createClass({
         </div>
 
       </div>
-    );
+    )
   }
-});
+})
 
 
-React.render(<App />, document.getElementById('js-app'));
+ReactDOM.render(<App />, document.getElementById('js-app'))
