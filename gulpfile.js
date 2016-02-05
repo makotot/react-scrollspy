@@ -59,7 +59,7 @@ gulp.task('compile', ['template', 'script', 'css']);
 
 gulp.task('serve', function () {
 
-  runSequence('clean', 'compile', function () {
+  runSequence('clean', 'lint', 'compile', function () {
     browserSync.init({
       server: './build',
       open: false
