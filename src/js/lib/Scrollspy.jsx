@@ -1,118 +1,123 @@
-var React = require('react');
+import React from 'react'
+
+const win = window
+const doc = document
 
 
-var Scrollspy = {};
+export class Scrollspy extends React.Component {
 
-var win = window,
-  doc = document;
-
-
-Scrollspy = React.createClass({
-
-  propTypes: {
-    items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-    currentClassName: React.PropTypes.string.isRequired
-  },
-
-  getInitialState: function () {
-
+  static get PropTypes () {
     return {
+      items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+      currentClassName: React.PropTypes.string.isRequired,
+    }
+  }
+
+  static get defaultProps () {
+    return {
+      items: [],
+      currentClassName: '',
+    }
+  }
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
       targetItems: [],
-      inViewState: []
-    };
-  },
+      inViewState: [],
+    }
+  }
 
-  _initSpyTarget: function (items) {
-    var targetItems = items.map(function (item) {
+  _initSpyTarget (items) {
+    const targetItems = items.map((item) => {
 
-      return doc.getElementById(item);
-    });
+      return doc.getElementById(item)
+    })
 
-    return targetItems;
-  },
+    return targetItems
+  }
 
-  _getElemsViewState: function (targets) {
-    var elemsInView = [],
-      elemsOutView = [],
-      viewStatusList = [];
+  _getElemsViewState (targets) {
+    let elemsInView = []
+    let elemsOutView = []
+    let viewStatusList = []
 
-    var targetItems = targets ? targets : this.state.targetItems;
+    const targetItems = targets ? targets : this.state.targetItems
 
-    var hasInViewAlready = false;
+    let hasInViewAlready = false
 
-    for (var i = 0, max = targetItems.length; i < max; i++) {
-      var currentContent = targetItems[i],
-        isInView = hasInViewAlready ? false : this._isInView(currentContent);
+    for (let i = 0, max = targetItems.length; i < max; i++) {
+      let currentContent = targetItems[i]
+      let isInView = hasInViewAlready ? false : this._isInView(currentContent)
 
       if (isInView) {
-        hasInViewAlready = true;
-        elemsInView.push(currentContent);
+        hasInViewAlready = true
+        elemsInView.push(currentContent)
       } else {
-        elemsOutView.push(currentContent);
+        elemsOutView.push(currentContent)
       }
 
-      viewStatusList.push(isInView);
+      viewStatusList.push(isInView)
     }
 
     return {
       inView: elemsInView,
       outView: elemsOutView,
-      viewStatusList: viewStatusList
-    };
-  },
+      viewStatusList,
+    }
+  }
 
-  _isInView: function (el) {
-    var winH = win.innerHeight,
-      scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop,
-      scrollBottom = scrollTop + winH,
-      elTop = el.offsetTop,
-      elBottom = elTop + el.offsetHeight;
+  _isInView (el) {
+    const winH = win.innerHeight
+    const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
+    const scrollBottom = scrollTop + winH
+    const elTop = el.offsetTop
+    const elBottom = elTop + el.offsetHeight
 
-    return (elTop < scrollBottom) && (elBottom > scrollTop);
-  },
+    return (elTop < scrollBottom) && (elBottom > scrollTop)
+  }
 
-  _spy: function (targets) {
+  _spy (targets) {
     this.setState({
-      inViewState: this._getElemsViewState(targets).viewStatusList
-    });
-  },
+      inViewState: this._getElemsViewState(targets).viewStatusList,
+    })
+  }
 
-  _handleSpy: function () {
-    var timer;
+  _handleSpy () {
+    let timer
 
     if (timer) {
-      clearTimeout(timer);
-      timer = null;
+      clearTimeout(timer)
+      timer = null
     }
-    timer = setTimeout(this._spy, 100);
-  },
+    timer = setTimeout(this._spy.bind(this), 100)
+  }
 
-  componentDidMount: function () {
-    var targetItems = this._initSpyTarget(this.props.items);
+  componentDidMount () {
+    const targetItems = this._initSpyTarget(this.props.items)
 
     this.setState({
-      targetItems: targetItems
-    });
+      targetItems,
+    })
 
-    this._spy(targetItems);
+    this._spy(targetItems)
 
-    win.addEventListener('scroll', this._handleSpy);
-  },
+    win.addEventListener('scroll', this._handleSpy.bind(this))
+  }
 
-  componentWillUnmount: function () {
-    win.removeEventListener('scroll', this._handleSpy);
-  },
+  componentWillUnmount () {
+    win.removeEventListener('scroll', this._handleSpy.bind(this))
+  }
 
-  render: function () {
-    var counter = 0,
-      items = this.props.children.map(function (child, idx) {
-
+  render () {
+    let counter = 0
+    const items = React.Children.map(this.props.children, (child, idx) => {
       return React.cloneElement(child, {
         className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : ''),
-        key: counter++
-      });
-
-    }.bind(this));
+        key: counter++,
+      })
+    })
 
     return (
       <nav>
@@ -120,8 +125,6 @@ Scrollspy = React.createClass({
           { items }
         </ul>
       </nav>
-    );
+    )
   }
-});
-
-module.exports = Scrollspy;
+}
