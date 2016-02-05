@@ -11,7 +11,7 @@
     ".eslintrc"
   ],
   "scripts": {
-    "build": "./node_modules/.bin/babel ./src/js/lib/scrollspy.jsx --out-file ./scrollspy.js",
+    "build": "./node_modules/.bin/babel ./src/js/lib/Scrollspy.jsx --out-file ./scrollspy.js",
     "prepublish": "npm run build",
     "serve": "gulp serve",
     "lint": "gulp lint"
