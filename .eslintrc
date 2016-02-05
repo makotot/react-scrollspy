@@ -1,5 +1,6 @@
 {
   "extends": "eslint-config-makotot",
+  "parser": "babel-eslint",
   "ecmaFeatures": {
     "jsx": true
   },
@@ -24,7 +25,7 @@
     "quotes": [1, "single"],
     "strict": [0],
     "max-params": [1, 4],
-    "semi": [1, "always"],
+    "semi": [1, "never"],
     "no-unused-vars": [1, {"vars": "all", "args": "after-used"}],
     "no-alert": [1],
     "valid-jsdoc": [1],
