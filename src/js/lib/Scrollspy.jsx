@@ -94,7 +94,7 @@ export class Scrollspy extends React.Component {
     timer = setTimeout(this._spy.bind(this), 100)
   }
 
-  componentDidMount () {
+  _initFromProps () {
     const targetItems = this._initSpyTarget(this.props.items)
 
     this.setState({
@@ -102,12 +102,19 @@ export class Scrollspy extends React.Component {
     })
 
     this._spy(targetItems)
+  }
 
+  componentDidMount () {
+    this._initFromProps()
     win.addEventListener('scroll', this._handleSpy.bind(this))
   }
 
   componentWillUnmount () {
     win.removeEventListener('scroll', this._handleSpy.bind(this))
+  }
+
+  componentWillReceiveProps () {
+    this._initFromProps()
   }
 
   render () {
