@@ -1,6 +1,7 @@
 # react-scrollspy
 
 [![npm version](https://img.shields.io/npm/v/react-scrollspy.svg?style=flat-square)](https://www.npmjs.com/package/react-scrollspy)
+[![travis](http://img.shields.io/travis/makotot/react-scrollspy.svg?style=flat-square)](https://travis-ci.org/makotot/react-scrollspy)
 [![dependencies](http://img.shields.io/david/makotot/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
 [![DevDependencies](http://img.shields.io/david/dev/makotot/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
 [![License](http://img.shields.io/npm/l/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
