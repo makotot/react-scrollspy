@@ -69,13 +69,16 @@ export class Scrollspy extends React.Component {
   }
 
   _isInView (el) {
-    const winH = win.innerHeight
-    const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
-    const scrollBottom = scrollTop + winH
-    const elTop = el.offsetTop
-    const elBottom = elTop + el.offsetHeight
-
-    return (elTop < scrollBottom) && (elBottom > scrollTop)
+    if (el) {
+      const winH = win.innerHeight
+      const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
+      const scrollBottom = scrollTop + winH
+      const elTop = el.offsetTop
+      const elBottom = elTop + el.offsetHeight
+  
+      return (elTop < scrollBottom) && (elBottom > scrollTop)
+    }
+    return false;
   }
 
   _spy (targets) {
