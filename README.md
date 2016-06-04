@@ -61,6 +61,10 @@ $ npm i
 $ gulp serve
 ```
 
+## Contributing
+
+Pull requests and [Reporting a issue](https://github.com/makotot/react-scrollspy/issues/new) are always welcome.
+
 
 ## License
 
