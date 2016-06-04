@@ -14,6 +14,7 @@
     "build": "./node_modules/.bin/babel ./src/js/lib/Scrollspy.jsx --out-file ./scrollspy.js",
     "prepublish": "npm run build",
     "serve": "gulp serve",
+    "start": "npm run serve",
     "lint": "gulp lint"
   },
   "repository": {

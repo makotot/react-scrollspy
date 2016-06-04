@@ -58,12 +58,12 @@ The class name that apply to the navigation element paired with the content elem
 $ git clone https://github.com/makotot/react-scrollspy.git
 $ cd react-scrollspy
 $ npm i
-$ gulp serve
+$ npm run start
 ```
 
 ## Contributing
 
-Pull requests and [Reporting a issue](https://github.com/makotot/react-scrollspy/issues/new) are always welcome.
+Pull requests and [Reporting a issue](https://github.com/makotot/react-scrollspy/issues/new) are always welcome :)
 
 
 ## License
