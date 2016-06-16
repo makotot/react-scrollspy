@@ -1,9 +1,5 @@
 import React from 'react'
 
-const win = window
-const doc = document
-
-
 export class Scrollspy extends React.Component {
 
   static get PropTypes () {
@@ -32,7 +28,7 @@ export class Scrollspy extends React.Component {
   _initSpyTarget (items) {
     const targetItems = items.map((item) => {
 
-      return doc.getElementById(item)
+      return document.getElementById(item)
     })
 
     return targetItems
@@ -69,8 +65,8 @@ export class Scrollspy extends React.Component {
   }
 
   _isInView (el) {
-    const winH = win.innerHeight
-    const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
+    const winH = window.innerHeight
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
     const scrollBottom = scrollTop + winH
     const elTop = el.offsetTop
     const elBottom = elTop + el.offsetHeight
@@ -106,11 +102,11 @@ export class Scrollspy extends React.Component {
 
   componentDidMount () {
     this._initFromProps()
-    win.addEventListener('scroll', this._handleSpy.bind(this))
+    window.addEventListener('scroll', this._handleSpy.bind(this))
   }
 
   componentWillUnmount () {
-    win.removeEventListener('scroll', this._handleSpy.bind(this))
+    window.removeEventListener('scroll', this._handleSpy.bind(this))
   }
 
   componentWillReceiveProps () {
