@@ -66,7 +66,8 @@ export class Scrollspy extends React.Component {
 
   _isInView (el) {
     const winH = window.innerHeight
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+    const doc = document
+    const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
     const scrollBottom = scrollTop + winH
     const elTop = el.offsetTop
     const elBottom = elTop + el.offsetHeight
