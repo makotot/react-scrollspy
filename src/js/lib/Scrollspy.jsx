@@ -124,11 +124,9 @@ export class Scrollspy extends React.Component {
     })
 
     return (
-      <nav>
-        <ul className={ this.props.className ? this.props.className : '' }>
-          { items }
-        </ul>
-      </nav>
+      <ul className={ this.props.className ? this.props.className : '' }>
+        { items }
+      </ul>
     )
   }
 }
