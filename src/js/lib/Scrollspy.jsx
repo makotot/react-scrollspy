@@ -23,6 +23,9 @@ export class Scrollspy extends React.Component {
       targetItems: [],
       inViewState: [],
     }
+    // manually bind as ES6 does not apply this
+    // auto binding as React.createClass does
+    this._handleSpy = this._handleSpy.bind(this)
   }
 
   _initSpyTarget (items) {
@@ -103,11 +106,11 @@ export class Scrollspy extends React.Component {
 
   componentDidMount () {
     this._initFromProps()
-    window.addEventListener('scroll', this._handleSpy.bind(this))
+    window.addEventListener('scroll', this._handleSpy)
   }
 
   componentWillUnmount () {
-    window.removeEventListener('scroll', this._handleSpy.bind(this))
+    window.removeEventListener('scroll', this._handleSpy)
   }
 
   componentWillReceiveProps () {
