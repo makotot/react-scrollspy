@@ -15,7 +15,6 @@ before_deploy:
 deploy:
   on:
     tags: true
-    branch: master
   provider: releases
   file:
     - "./react-scrollspy.tar.gz"
