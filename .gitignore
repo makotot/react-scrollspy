@@ -40,5 +40,7 @@ node_modules
 
 
 build/
-
+release/
 scrollspy.js
+*.zip
+*.tar.gz

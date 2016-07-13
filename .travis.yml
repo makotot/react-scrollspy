@@ -1,7 +1,24 @@
 language: node_js
 node_js:
-  - '0.12'
-  - '4'
-  - '5'
-  - '6'
+- '0.12'
+- '4'
+- '5'
+- '6'
 script: npm run lint
+after_success:
+- test ${TRAVIS_TAG} && npm run build
+cache:
+  directories:
+    - node_modules
+before_deploy:
+  - ./release.sh
+deploy:
+  on:
+    tags: true
+    branch: master
+  provider: releases
+  file:
+    - "./react-scrollspy.tar.gz"
+    - "./react-scrollspy.zip"
+  api_key:
+    - secure: QuNZkL9fPvI8t3fmDc29+AY/V3beauY1vOFXmBhfyujLte1AwTLzFuyAVzNnUw/YVWKctd8UKTumPVWh4H+92RSzr2Pg/BJmzb2zDGSDacB5tSD5zNSp7wp+RXkUW2OPUlAPfeMvH06GA37AisKWQNE+qIkG2dVyLNwIow426rND8jpakv1dFcHcXSyb2CZF32iD9ncTSCXQFTkko1UvEF9P5zIly9hzlE3P08k8eArAXDOqimyDLV34BUtsMllEWZMin5mOxJ3z9Gra+eTY35z5C1YHk0jmD8CCREd+AIi8TQXSfPCPeW2/VNdWUFc2BUGZRJnaYNgmFHgOW3ySs2gvRGbmuC2ig+KhNDFAEZBh7PS1XXWLPftYNXLR/YwKR5TcxJAcNHYrI8uCzuDxuzxI+0VFnnNLoiblJb/pmNLD5vrtXc7JabsGVmXL5NliWY5yRJ1kdPlkrvCpjOmtIW1FhDIeuWuGGktj3mUIaOL7LWY/MtMi+SfyFnwLLCB6fkFmqOy8T1iw0/5yDOLZwosKzIPLFVOuWkd6VzwJ9YXjnR6Ou9kNxHw1ANi76YCX91JieNvvWJBXzPDfrzR+mhrAeUP5e4PT0aHPZQ1P1WqprZLQbMdjzUMpbhjl4w0FR3bwHpex7qJE3QPEQygz1W1IVWKkmIAymSv6I+CEy9o=
