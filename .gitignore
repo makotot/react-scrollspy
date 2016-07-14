@@ -44,3 +44,4 @@ release/
 scrollspy.js
 *.zip
 *.tar.gz
+.DS_Store
