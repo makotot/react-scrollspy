@@ -57,6 +57,18 @@ export class Scrollspy extends React.Component {
         elemsOutView.push(currentContent)
       }
 
+      if (this._isAtEnd() &&                // We have reached the end,
+          this._isInView(currentContent) && // and the last element is visible,
+          !isInView &&                      // but not triggered.          
+          i===max-1 &&                      
+          (document.documentElement.scrollTop || document.body.scrollTop)>0) { // Only if we have scrolled.
+        elemsOutView.pop()                 // Cancel adding this element to elemsOutView.
+        elemsOutView.push(...elemsInView)  // Transfer everything from elemsInView to elemsOutView,
+        elemsInView = [currentContent]     // and make current element the only elemsInView element.
+        viewStatusList.fill(false)         // Make other elements false,
+        isInView = true                    // and this element true.
+      }
+
       viewStatusList.push(isInView)
     }
 
@@ -77,6 +89,14 @@ export class Scrollspy extends React.Component {
     const elBottom = elTop + el.offsetHeight
 
     return (elTop < scrollBottom) && (elBottom > scrollTop)
+  }
+
+  _isAtEnd () {
+    const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
+    const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight
+    const scrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight
+    
+    return scrolledToBottom
   }
 
   _spy (targets) {
