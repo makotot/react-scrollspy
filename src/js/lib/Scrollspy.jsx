@@ -57,6 +57,18 @@ export class Scrollspy extends React.Component {
         elemsOutView.push(currentContent)
       }
 
+      if (this._isAtEnd() &&
+      this._isInView(currentContent) &&
+      !isInView &&
+      i === max - 1 &&
+      (document.documentElement.scrollTop || document.body.scrollTop) > 0) {
+        elemsOutView.pop()
+        elemsOutView.push(...elemsInView)
+        elemsInView = [currentContent]
+        viewStatusList.fill(false)
+        isInView = true
+      }
+
       viewStatusList.push(isInView)
     }
 
@@ -79,6 +91,13 @@ export class Scrollspy extends React.Component {
     return (elTop < scrollBottom) && (elBottom > scrollTop)
   }
 
+  _isAtEnd () {
+    const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop
+    const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight
+    const scrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight
+
+    return scrolledToBottom
+  }
   _spy (targets) {
     this.setState({
       inViewState: this._getElemsViewState(targets).viewStatusList,
