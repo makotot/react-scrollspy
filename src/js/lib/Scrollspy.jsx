@@ -61,7 +61,7 @@ export class Scrollspy extends React.Component {
       const isScrolled = (document.documentElement.scrollTop || document.body.scrollTop) > 0
 
       // https://github.com/makotot/react-scrollspy/pull/26#issue-167413769
-      if (this._isAtBottom() && this._isInView(currentContent) && !isInView && isLastItem && iscrolled) {
+      if (this._isAtBottom() && this._isInView(currentContent) && !isInView && isLastItem && isScrolled) {
         elemsOutView.pop()
         elemsOutView.push(...elemsInView)
         elemsInView = [currentContent]
