@@ -141,6 +141,7 @@ export class Scrollspy extends React.Component {
 
   render () {
     let counter = 0
+    var styles = _.extend({},this.props.style)
     const items = React.Children.map(this.props.children, (child, idx) => {
       return React.cloneElement(child, {
         className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : ''),
@@ -149,7 +150,7 @@ export class Scrollspy extends React.Component {
     })
 
     return (
-      <ul className={ this.props.className ? this.props.className : '' }>
+      <ul className={ this.props.className ? this.props.className : '' } style={styles}>
         { items }
       </ul>
     )

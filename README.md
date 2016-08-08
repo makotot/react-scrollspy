@@ -51,6 +51,9 @@ The id list of target contents.
 
 The class name that apply to the navigation element paired with the content element in viewport.
 
+### `style={Object}`
+
+Style attribute to be passed to the generated &lt;ul/&gt; element [optional]. 
 
 ## Development
 
