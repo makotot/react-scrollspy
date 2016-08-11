@@ -80,6 +80,9 @@ export class Scrollspy extends React.Component {
   }
 
   _isInView (el) {
+    if (!el) {
+      return false
+    }
     const rect = el.getBoundingClientRect()
     const winH = window.innerHeight
     const doc = document
