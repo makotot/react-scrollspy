@@ -16,13 +16,13 @@
     "serve": "gulp serve",
     "start": "npm run serve",
     "lint": "gulp lint",
-    "test": "npm run lint && ./node_modules/.bin/ava test/test.js"
+    "test": "npm run lint && ./node_modules/.bin/ava test/test.js --verbose"
   },
   "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
+    "require": ["babel-register"],
+    "babel": {
+      "babelrc": true
+    }
   },
   "repository": {
     "type": "git",
