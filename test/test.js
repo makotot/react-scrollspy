@@ -32,3 +32,14 @@ test('render correct children length', (t) => {
   )
   t.is(wrapper.find('li').length, 3)
 })
+test('should update targetItems after receiving new props', (t) => {
+  const wrapper = mount(
+    <Scrollspy items={ [] } />
+  )
+
+  t.is(wrapper.state('targetItems').length, 0)
+
+  wrapper.setProps({ items: [ 'section-1', 'section-2', 'section-3' ] })
+
+  t.is(wrapper.state('targetItems').length, 3)
+})
