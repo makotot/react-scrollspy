@@ -52,9 +52,9 @@
     "gulp-eslint": "^1.1.1",
     "gulp-sass": "^2.2.0",
     "jsx-test-helpers": "^1.1.0",
-    "react": "^15.3.0",
-    "react-addons-test-utils": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": ">=0.14.0",
+    "react-addons-test-utils": ">=0.14.0",
+    "react-dom": ">=0.14.0",
     "run-sequence": "^1.1.5",
     "vinyl-source-stream": "^1.1.0"
   },
