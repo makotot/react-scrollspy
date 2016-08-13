@@ -6,6 +6,7 @@ export class Scrollspy extends React.Component {
     return {
       items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
       currentClassName: React.PropTypes.string.isRequired,
+      style: React.PropTypes.object,
     }
   }
 
