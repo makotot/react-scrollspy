@@ -104,6 +104,7 @@ export class Scrollspy extends React.Component {
 
     return scrolledToBottom
   }
+
   _spy (targets) {
     this.setState({
       inViewState: this._getElemsViewState(targets).viewStatusList,
@@ -145,8 +146,8 @@ export class Scrollspy extends React.Component {
 
   render () {
     let counter = 0
-    const style = Object.assign({}, this.props.style)
     const items = React.Children.map(this.props.children, (child, idx) => {
+
       return React.cloneElement(child, {
         className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : ''),
         key: counter++,
@@ -154,7 +155,7 @@ export class Scrollspy extends React.Component {
     })
 
     return (
-      <ul className={ this.props.className ? this.props.className : '' } style={ style }>
+      <ul className={ this.props.className ? this.props.className : '' } style={ this.props.style }>
         { items }
       </ul>
     )

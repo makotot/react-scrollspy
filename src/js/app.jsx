@@ -36,7 +36,7 @@ const App = React.createClass({
 
         <div className="nav-list-wrapper">
           <nav>
-            <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current" className="nav-list">
+            <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current" className="nav-list" style={ {backgroundColor: '#ccc'} }>
               <li><a href="#section-1">section 1</a></li>
               <li><a href="#section-2">section 2</a></li>
               <li>
