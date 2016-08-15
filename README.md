@@ -43,15 +43,15 @@ var Scrollspy = require('react-scrollspy').Scrollspy;
 
 ## Props
 
-### `items={Array}`
+### `items={ Array }`
 
-The id list of target contents.
+Id list of target contents.
 
-### `currentClassName={String}`
+### `currentClassName={ String }`
 
-The class name that apply to the navigation element paired with the content element in viewport.
+Class name that apply to the navigation element paired with the content element in viewport.
 
-### `style={Object}`
+### `style={ Object }`
 
 Style attribute to be passed to the generated &lt;ul/&gt; element [optional]. 
 
