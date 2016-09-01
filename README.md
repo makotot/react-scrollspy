@@ -66,7 +66,7 @@ $ npm run start
 
 ## Contributing
 
-Pull requests and [reporting a issue](https://github.com/makotot/react-scrollspy/issues/new) are always welcome :)
+Pull requests and [reporting an issue](https://github.com/makotot/react-scrollspy/issues/new) are always welcome :)
 
 
 ## License
