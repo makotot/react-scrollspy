@@ -14,7 +14,7 @@ node_js:
 script: npm run test
 after_success:
 - test ${TRAVIS_TAG} && npm run build
-- ./docs.sh
+- npm run docs && ./docs.sh
 cache:
   directories:
     - node_modules

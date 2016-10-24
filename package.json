@@ -16,6 +16,7 @@
     "serve": "gulp serve",
     "start": "npm run serve",
     "lint": "gulp lint",
+    "docs": "gulp clean && gulp compile",
     "test": "npm run lint && ./node_modules/.bin/ava test/test.js --verbose"
   },
   "ava": {
