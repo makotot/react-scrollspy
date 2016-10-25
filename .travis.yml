@@ -1,12 +1,12 @@
 language: node_js
 env:
   global:
-    - GH_REPO="makotot/react-scrollspy"
-    - GIT_COMMITTER_NAME=makotot
-    - GIT_COMMITTER_EMAIL=makoto.ttn@gmail.com
-    - GIT_AUTHOR_NAME=makotot
-    - GIT_AUTHOR_EMAIL=makoto.ttn@gmail.com
-    - secure: QuNZkL9fPvI8t3fmDc29+AY/V3beauY1vOFXmBhfyujLte1AwTLzFuyAVzNnUw/YVWKctd8UKTumPVWh4H+92RSzr2Pg/BJmzb2zDGSDacB5tSD5zNSp7wp+RXkUW2OPUlAPfeMvH06GA37AisKWQNE+qIkG2dVyLNwIow426rND8jpakv1dFcHcXSyb2CZF32iD9ncTSCXQFTkko1UvEF9P5zIly9hzlE3P08k8eArAXDOqimyDLV34BUtsMllEWZMin5mOxJ3z9Gra+eTY35z5C1YHk0jmD8CCREd+AIi8TQXSfPCPeW2/VNdWUFc2BUGZRJnaYNgmFHgOW3ySs2gvRGbmuC2ig+KhNDFAEZBh7PS1XXWLPftYNXLR/YwKR5TcxJAcNHYrI8uCzuDxuzxI+0VFnnNLoiblJb/pmNLD5vrtXc7JabsGVmXL5NliWY5yRJ1kdPlkrvCpjOmtIW1FhDIeuWuGGktj3mUIaOL7LWY/MtMi+SfyFnwLLCB6fkFmqOy8T1iw0/5yDOLZwosKzIPLFVOuWkd6VzwJ9YXjnR6Ou9kNxHw1ANi76YCX91JieNvvWJBXzPDfrzR+mhrAeUP5e4PT0aHPZQ1P1WqprZLQbMdjzUMpbhjl4w0FR3bwHpex7qJE3QPEQygz1W1IVWKkmIAymSv6I+CEy9o=
+  - GH_REPO="makotot/react-scrollspy"
+  - GIT_COMMITTER_NAME=makotot
+  - GIT_COMMITTER_EMAIL=makoto.ttn@gmail.com
+  - GIT_AUTHOR_NAME=makotot
+  - GIT_AUTHOR_EMAIL=makoto.ttn@gmail.com
+  - secure: G8ee2qd/yrzGBxlafPPq85WG7ii/dS9ORiNcHSIIzHxD9j6jsXwOCx8S9i3zs04r/pxHtkeIAwhGDDJbZHdSR+yaEg78ZM7PFTJc4zqrwsQiYmsNlSczdPxn1YYLGq6w1f6gb0BeqtNq+f/NJpynoR2EjRgIxkUO9bOsKyivhbPiqCxnKPOdBvqRa4lgNraVyLSG5sldE+IQeeE0et0BKiXFWuad4JCYdjVGMmenuZB06CCwdvGT3gOueoZLLCTvWOcIV0jyeG78RTUubMAjBHHrvT4EY8RkJihmkhJgm4JAh6Q+7RXX73Xf2Q5SzTG4nzTeLWp8X60wU2FKqA2/yy43sxAo/vBfm0xJKUrgUNjRNd5oiWE5BTqWTxuls2c8oKCoAbTjastPwnJ+vHN0zntz+ZysyKPn4TuDVOLpLIyZMmdfE9R2nDK5eKJvE+W7gKGS1t6zDiYP9LfCbbRhKlM1xx/B4QRJT/T35YP+I1OV/a00ZoE+uVq2jYw0HQlDehFPjTyr050Snu1dmVoko+qchZIV0RqsUjhljcy1wqAgcHvaqKGWpESDk7+U8MjUYHg2QIm7j+kD+kZot7HzcugBE/9VskEXdSDb1d49a4JKVrDIyAioBDNlMGuyPIxCGobBMXlK1buhYmtShc9bPPYkxk/3nvrGYRmMFhbzsmg=
 node_js:
 - '0.12'
 - '4'
@@ -20,14 +20,14 @@ cache:
   directories:
     - node_modules
 before_deploy:
-  - ./release.sh
+  - "./release.sh"
 deploy:
   on:
     tags: true
     branch: master
   provider: releases
   file:
-    - "./react-scrollspy.tar.gz"
-    - "./react-scrollspy.zip"
+  - "./react-scrollspy.tar.gz"
+  - "./react-scrollspy.zip"
   api_key:
     - secure: QuNZkL9fPvI8t3fmDc29+AY/V3beauY1vOFXmBhfyujLte1AwTLzFuyAVzNnUw/YVWKctd8UKTumPVWh4H+92RSzr2Pg/BJmzb2zDGSDacB5tSD5zNSp7wp+RXkUW2OPUlAPfeMvH06GA37AisKWQNE+qIkG2dVyLNwIow426rND8jpakv1dFcHcXSyb2CZF32iD9ncTSCXQFTkko1UvEF9P5zIly9hzlE3P08k8eArAXDOqimyDLV34BUtsMllEWZMin5mOxJ3z9Gra+eTY35z5C1YHk0jmD8CCREd+AIi8TQXSfPCPeW2/VNdWUFc2BUGZRJnaYNgmFHgOW3ySs2gvRGbmuC2ig+KhNDFAEZBh7PS1XXWLPftYNXLR/YwKR5TcxJAcNHYrI8uCzuDxuzxI+0VFnnNLoiblJb/pmNLD5vrtXc7JabsGVmXL5NliWY5yRJ1kdPlkrvCpjOmtIW1FhDIeuWuGGktj3mUIaOL7LWY/MtMi+SfyFnwLLCB6fkFmqOy8T1iw0/5yDOLZwosKzIPLFVOuWkd6VzwJ9YXjnR6Ou9kNxHw1ANi76YCX91JieNvvWJBXzPDfrzR+mhrAeUP5e4PT0aHPZQ1P1WqprZLQbMdjzUMpbhjl4w0FR3bwHpex7qJE3QPEQygz1W1IVWKkmIAymSv6I+CEy9o=
