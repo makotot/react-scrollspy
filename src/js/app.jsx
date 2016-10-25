@@ -107,8 +107,12 @@ const App = React.createClass({
                         <td className="c-table__data">Class name that apply to the navigation element paired with the content element in viewport.</td>
                       </tr>
                       <tr>
+                        <td className="c-table__data">componentTag</td>
+                        <td className="c-table__data">HTML tag for Scrollspy component if you want to use other than <code>{'<ul/>'}</code> [optional].</td>
+                      </tr>
+                      <tr>
                         <td className="c-table__data">style</td>
-                        <td className="c-table__data">Style attribute to be passed to the generated <Highlight className="c-code__inner">{'<ul/>'}</Highlight> element [optional].</td>
+                        <td className="c-table__data">Style attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
                       </tr>
                     </tbody>
                   </table>

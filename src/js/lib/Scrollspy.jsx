@@ -7,6 +7,7 @@ export class Scrollspy extends React.Component {
       items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
       currentClassName: React.PropTypes.string.isRequired,
       style: React.PropTypes.object,
+      componentTag: React.PropTypes.string,
     }
   }
 
@@ -145,6 +146,7 @@ export class Scrollspy extends React.Component {
   }
 
   render () {
+    const Tag = this.props.componentTag || 'ul'
     let counter = 0
     const items = React.Children.map(this.props.children, (child, idx) => {
 
@@ -155,9 +157,9 @@ export class Scrollspy extends React.Component {
     })
 
     return (
-      <ul className={ this.props.className ? this.props.className : '' } style={ this.props.style }>
+      <Tag className={ this.props.className ? this.props.className : '' } style={ this.props.style }>
         { items }
-      </ul>
+      </Tag>
     )
   }
 }
