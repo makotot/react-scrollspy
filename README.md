@@ -8,6 +8,7 @@
 
 > Scrollspy component
 
+[Demo](http://makotot.github.io/react-scrollspy/)
 
 ## Install
 
