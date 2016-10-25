@@ -52,6 +52,10 @@ Id list of target contents.
 
 Class name that apply to the navigation element paired with the content element in viewport.
 
+### `componentTag={ String }`
+
+HTML tag for Scrollspy component if you want to use other than `ul` [optional].
+
 ### `style={ Object }`
 
 Style attribute to be passed to the generated &lt;ul/&gt; element [optional]. 
