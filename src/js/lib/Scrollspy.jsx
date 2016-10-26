@@ -149,6 +149,9 @@ export class Scrollspy extends React.Component {
     const Tag = this.props.componentTag || 'ul'
     let counter = 0
     const items = React.Children.map(this.props.children, (child, idx) => {
+      if (!child) {
+        return null
+      }
 
       return React.cloneElement(child, {
         className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : ''),
