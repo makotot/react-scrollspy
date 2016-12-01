@@ -6,6 +6,7 @@ export class Scrollspy extends React.Component {
     return {
       items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
       currentClassName: React.PropTypes.string.isRequired,
+      scrolledPastClassName: React.PropTypes.string,
       style: React.PropTypes.object,
       componentTag: React.PropTypes.string,
     }
@@ -24,6 +25,7 @@ export class Scrollspy extends React.Component {
     this.state = {
       targetItems: [],
       inViewState: [],
+      isScrolledPast: []
     }
     // manually bind as ES6 does not apply this
     // auto binding as React.createClass does
@@ -43,6 +45,7 @@ export class Scrollspy extends React.Component {
     let elemsInView = []
     let elemsOutView = []
     let viewStatusList = []
+    let scrolledPast = []
 
     const targetItems = targets ? targets : this.state.targetItems
 
@@ -78,6 +81,7 @@ export class Scrollspy extends React.Component {
       inView: elemsInView,
       outView: elemsOutView,
       viewStatusList,
+      scrolledPast: this._getScrolledPast(viewStatusList),
     }
   }
 
@@ -106,9 +110,23 @@ export class Scrollspy extends React.Component {
     return scrolledToBottom
   }
 
+  _getScrolledPast (isInView) {
+    let foundInView = false
+    return isInView.map((x) => {
+      // if element is in view, flip flag and return the original state
+      if(x && !foundInView){
+        foundInView = true
+        return x
+      }
+      return !foundInView
+    })
+  }
+
   _spy (targets) {
+    const elemensViewState = this._getElemsViewState(targets)
     this.setState({
-      inViewState: this._getElemsViewState(targets).viewStatusList,
+      inViewState: elemensViewState.viewStatusList,
+      isScrolledPast: elemensViewState.scrolledPast
     })
   }
 
@@ -153,8 +171,10 @@ export class Scrollspy extends React.Component {
         return null
       }
 
+      const isScrolledPast = this.props.scrolledPastClassName && this.state.isScrolledPast[idx]
+
       return React.cloneElement(child, {
-        className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : ''),
+        className: (child.props.className ? child.props.className : '') + (this.state.inViewState[idx] ? ' ' + this.props.currentClassName : '') + (isScrolledPast ? ` ${this.props.scrolledPastClassName}` : ''),
         key: counter++,
       })
     })

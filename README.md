@@ -52,6 +52,10 @@ Id list of target contents.
 
 Class name that apply to the navigation element paired with the content element in viewport.
 
+### `scrolledPastClassName={ String }`
+
+Class name that apply to the navigation elements that have been scrolled past [optional].
+
 ### `componentTag={ String }`
 
 HTML tag for Scrollspy component if you want to use other than `ul` [optional].

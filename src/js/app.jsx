@@ -19,7 +19,7 @@ const App = React.createClass({
             <h2 className="c-side-nav__heading c-heading-4 c-heading-4--upper u-font-italic">react<br />scrollspy</h2>
           </div>
           <nav className="c-side-nav__body">
-            <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current" className="c-side-nav__list nav-list" style={ {fontWeight: 300} }>
+            <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current" scrolledPastClassName="is-scrolled-past" className="c-side-nav__list nav-list" style={ {fontWeight: 300} }>
               <li className="c-side-nav__item"><a href="#section-1" className="c-side-nav__link">Getteing Started</a></li>
               <li className="c-side-nav__item"><a href="#section-2" className="c-side-nav__link">Example</a></li>
               <li className="c-side-nav__item"><a href="#section-3" className="c-side-nav__link">Props</a></li>
@@ -105,6 +105,10 @@ const App = React.createClass({
                       <tr>
                         <td className="c-table__data">currentClassName</td>
                         <td className="c-table__data">Class name that apply to the navigation element paired with the content element in viewport.</td>
+                      </tr>
+                      <tr>
+                        <td className="c-table__data">scrolledPastClassName</td>
+                        <td className="c-table__data">Class name that apply to the navigation elements that have been scrolled past [optional].</td>
                       </tr>
                       <tr>
                         <td className="c-table__data">componentTag</td>
