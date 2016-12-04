@@ -60,6 +60,10 @@ HTML tag for Scrollspy component if you want to use other than `ul` [optional].
 
 Style attribute to be passed to the generated &lt;ul/&gt; element [optional]. 
 
+### `offset={ Number }`
+
+Offset value that adjusts to determine the elements are in the viewport.
+
 ## Development
 
 ```sh

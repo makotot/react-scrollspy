@@ -26,7 +26,7 @@ const App = React.createClass({
               currentClassName="is-current"
               className="c-side-nav__list nav-list"
               style={ {fontWeight: 300} }
-              offset={ 20 }
+              offset={ -20 }
             >
               <li className="c-side-nav__item"><a href="#section-1" className="c-side-nav__link">Getteing Started</a></li>
               <li className="c-side-nav__item"><a href="#section-2" className="c-side-nav__link">Example</a></li>
@@ -121,6 +121,10 @@ const App = React.createClass({
                       <tr>
                         <td className="c-table__data">style</td>
                         <td className="c-table__data">Style attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
+                      </tr>
+                      <tr>
+                        <td className="c-table__data">offset</td>
+                        <td className="c-table__data">Offset value that adjusts to determine the elements are in the viewport [optional].</td>
                       </tr>
                     </tbody>
                   </table>

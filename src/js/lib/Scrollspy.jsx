@@ -94,10 +94,10 @@ export class Scrollspy extends React.Component {
     const doc = document
     const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
     const scrollBottom = scrollTop + winH
-    const elTop = rect.top + scrollTop
+    const elTop = rect.top + scrollTop + this.props.offset
     const elBottom = elTop + el.offsetHeight
 
-    return ((elTop + this.props.offset) < scrollBottom) && (elBottom > scrollTop)
+    return (elTop < scrollBottom) && (elBottom > scrollTop)
   }
 
   _isAtBottom () {
