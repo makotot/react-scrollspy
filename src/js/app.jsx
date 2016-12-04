@@ -26,7 +26,7 @@ const App = React.createClass({
               currentClassName="is-current"
               className="c-side-nav__list nav-list"
               style={ {fontWeight: 300} }
-              offset={ 100 }
+              offset={ 20 }
             >
               <li className="c-side-nav__item"><a href="#section-1" className="c-side-nav__link">Getteing Started</a></li>
               <li className="c-side-nav__item"><a href="#section-2" className="c-side-nav__link">Example</a></li>
