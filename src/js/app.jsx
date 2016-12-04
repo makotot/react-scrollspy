@@ -11,6 +11,8 @@ const App = React.createClass({
       minHeight: '600px',
     }
 
+    const version = require('../../package.json').version
+
     return (
       <div className="o-wrapper">
 
@@ -19,7 +21,13 @@ const App = React.createClass({
             <h2 className="c-side-nav__heading c-heading-4 c-heading-4--upper u-font-italic">react<br />scrollspy</h2>
           </div>
           <nav className="c-side-nav__body">
-            <Scrollspy items={ ['section-1', 'section-2', 'section-3'] } currentClassName="is-current" className="c-side-nav__list nav-list" style={ {fontWeight: 300} }>
+            <Scrollspy
+              items={ ['section-1', 'section-2', 'section-3'] }
+              currentClassName="is-current"
+              className="c-side-nav__list nav-list"
+              style={ {fontWeight: 300} }
+              offset={ -20 }
+            >
               <li className="c-side-nav__item"><a href="#section-1" className="c-side-nav__link">Getteing Started</a></li>
               <li className="c-side-nav__item"><a href="#section-2" className="c-side-nav__link">Example</a></li>
               <li className="c-side-nav__item"><a href="#section-3" className="c-side-nav__link">Props</a></li>
@@ -37,7 +45,7 @@ const App = React.createClass({
                     <span className="o-hero__sub-heading c-lead">Scrollspy Component</span>
                   </li>
                   <li className="o-inline-list__item">
-                    <span className="c-tag">v2.3.1</span>
+                    <span className="c-tag">v{ version }</span>
                   </li>
                 </ul>
               </div>
@@ -113,6 +121,10 @@ const App = React.createClass({
                       <tr>
                         <td className="c-table__data">style</td>
                         <td className="c-table__data">Style attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
+                      </tr>
+                      <tr>
+                        <td className="c-table__data">offset</td>
+                        <td className="c-table__data">Offset value that adjusts to determine the elements are in the viewport [optional].</td>
                       </tr>
                     </tbody>
                   </table>

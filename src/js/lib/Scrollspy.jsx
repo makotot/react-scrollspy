@@ -8,6 +8,7 @@ export class Scrollspy extends React.Component {
       currentClassName: React.PropTypes.string.isRequired,
       style: React.PropTypes.object,
       componentTag: React.PropTypes.string,
+      offset: React.PropTypes.number,
     }
   }
 
@@ -15,6 +16,9 @@ export class Scrollspy extends React.Component {
     return {
       items: [],
       currentClassName: '',
+      style: {},
+      componentTag: 'ul',
+      offset: 0,
     }
   }
 
@@ -90,7 +94,7 @@ export class Scrollspy extends React.Component {
     const doc = document
     const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
     const scrollBottom = scrollTop + winH
-    const elTop = rect.top + scrollTop
+    const elTop = rect.top + scrollTop + this.props.offset
     const elBottom = elTop + el.offsetHeight
 
     return (elTop < scrollBottom) && (elBottom > scrollTop)
@@ -146,7 +150,7 @@ export class Scrollspy extends React.Component {
   }
 
   render () {
-    const Tag = this.props.componentTag || 'ul'
+    const Tag = this.props.componentTag
     let counter = 0
     const items = React.Children.map(this.props.children, (child, idx) => {
       if (!child) {
