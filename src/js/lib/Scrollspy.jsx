@@ -114,7 +114,7 @@ export class Scrollspy extends React.Component {
     let foundInView = false
     return isInView.map((x) => {
       // if element is in view, flip flag and return the original state
-      if(x && !foundInView){
+      if (x && !foundInView){
         foundInView = true
         return x
       }
