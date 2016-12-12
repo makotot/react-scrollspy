@@ -45,7 +45,6 @@ export class Scrollspy extends React.Component {
     let elemsInView = []
     let elemsOutView = []
     let viewStatusList = []
-    let scrolledPast = []
 
     const targetItems = targets ? targets : this.state.targetItems
 
@@ -112,6 +111,12 @@ export class Scrollspy extends React.Component {
 
   _getScrolledPast (isInView) {
     let foundInView = false
+
+    // if no elements is in view, return original array
+    if (!isInView.some((e) => e)) {
+      return isInView
+    }
+
     return isInView.map((x) => {
       // if element is in view, flip flag and return the original state
       if (x && !foundInView){
