@@ -11,3 +11,9 @@
     font-weight: bold;
   }
 }
+
+.is-scrolled-past {
+  > a {
+    background: rgba(0, 0, 0, .1);
+  }
+}
