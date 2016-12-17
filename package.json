@@ -1,6 +1,6 @@
 {
   "name": "react-scrollspy",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "react scrollspy component",
   "main": "./scrollspy.js",
   "files": [
@@ -66,13 +66,14 @@
     "react-dom": ">=0.14.0",
     "react-addons-test-utils": ">=0.14.0"
   },
+  "dependencies": {
+    "classnames": "^2.2.5"
+  },
   "keywords": [
     "react",
     "react-component",
+    "component",
     "scrollspy",
     "scroll"
-  ],
-  "dependencies": {
-    "classnames": "^2.2.5"
-  }
+  ]
 }
