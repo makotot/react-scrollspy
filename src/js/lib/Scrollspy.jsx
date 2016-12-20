@@ -86,7 +86,7 @@ export class Scrollspy extends React.Component {
       inView: elemsInView,
       outView: elemsOutView,
       viewStatusList,
-      scrolledPast: this._getScrolledPast(viewStatusList),
+      scrolledPast: this.props.scrolledPastClassName && this._getScrolledPast(viewStatusList),
     }
   }
 
