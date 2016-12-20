@@ -185,7 +185,7 @@ export class Scrollspy extends React.Component {
       const ChildTag = child.type;
       const isScrolledPast = this.props.scrolledPastClassName && this.state.isScrolledPast[idx]
       const childClass = classNames({
-        [`${ this.props.className }`]: this.props.className,
+        [`${ child.props.className }`]: child.props.className,
         [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
         [`${ this.props.scrolledPastClassName }`]: isScrolledPast,
       })
