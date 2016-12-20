@@ -125,7 +125,7 @@ export class Scrollspy extends React.Component {
     const scrolledPastItems = viewStatusList.map((item) => {
       if (item && !hasFoundInView) {
         hasFoundInView = true
-        return item
+        return false
       }
       return !hasFoundInView
     })
