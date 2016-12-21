@@ -86,7 +86,7 @@ export class Scrollspy extends React.Component {
       inView: elemsInView,
       outView: elemsOutView,
       viewStatusList,
-      scrolledPast: this._getScrolledPast(viewStatusList),
+      scrolledPast: this.props.scrolledPastClassName && this._getScrolledPast(viewStatusList),
     }
   }
 
@@ -125,7 +125,7 @@ export class Scrollspy extends React.Component {
     const scrolledPastItems = viewStatusList.map((item) => {
       if (item && !hasFoundInView) {
         hasFoundInView = true
-        return item
+        return false
       }
       return !hasFoundInView
     })
