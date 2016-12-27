@@ -14,3 +14,12 @@ test('renders correct children length', (t) => {
   )
   t.is(wrapper.find('li').length, 3)
 })
+
+test('renders children with correct props', (t) => {
+  const wrapper = shallow(
+    <Scrollspy items={ ['section-1'] } currentClassName="is-current">
+      <li className="" randomProp="someText"><a href="#section-1">section 1</a></li>
+    </Scrollspy>
+  )
+  t.is(wrapper.find('li').prop('randomProp'), 'someText')
+})
