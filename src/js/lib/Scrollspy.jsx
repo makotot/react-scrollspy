@@ -191,7 +191,7 @@ export class Scrollspy extends React.Component {
       })
 
       return (
-        <ChildTag className={ childClass } key={ counter++ }>
+        <ChildTag {...child.props} className={ childClass } key={ counter++ }>
           { child.props.children }
         </ChildTag>
       )
