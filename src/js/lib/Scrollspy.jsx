@@ -171,17 +171,12 @@ export class Scrollspy extends Component {
         return null
       }
 
-      const ChildTag = child.type
       const childClass = classNames(child.props.className, {
         [this.props.currentClassName]: this.state.inViewState[idx],
         [this.props.scrolledPastClassName]: this.state.isScrolledPast[idx],
       })
 
-      return (
-        <ChildTag {...child.props} className={ childClass } key={ idx }>
-          { child.props.children }
-        </ChildTag>
-      )
+      return React.cloneElement(child, { className: childClass })
     })
 
     return (
