@@ -174,9 +174,9 @@ export class Scrollspy extends Component {
 
       const ChildTag = child.type
       const childClass = classNames({
-        [`${ child.props.className }`]: child.props.className,
-        [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
-        [`${ this.props.scrolledPastClassName }`]: this.state.isScrolledPast[idx],
+        [child.props.className]: child.props.className,
+        [this.props.currentClassName]: this.state.inViewState[idx],
+        [this.props.scrolledPastClassName]: this.state.isScrolledPast[idx],
       })
 
       return (
@@ -187,7 +187,7 @@ export class Scrollspy extends Component {
     })
 
     const itemClass = classNames({
-      [`${ this.props.className }`]: this.props.className,
+      [this.props.className]: this.props.className,
     })
 
     return (
