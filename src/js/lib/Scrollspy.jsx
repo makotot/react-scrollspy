@@ -40,12 +40,7 @@ export class Scrollspy extends Component {
   }
 
   _initSpyTarget (items) {
-    const targetItems = items.map((item) => {
-
-      return document.getElementById(item)
-    })
-
-    return targetItems
+    return items.map((item) => document.getElementById(item))
   }
 
   _getElemsViewState (targets) {
