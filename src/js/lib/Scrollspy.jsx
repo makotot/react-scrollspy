@@ -142,13 +142,7 @@ export class Scrollspy extends Component {
   }
 
   _handleSpy () {
-    let timer
-
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
-    }
-    timer = setTimeout(this._spy.bind(this), 100)
+    setTimeout(this._spy.bind(this), 100)
   }
 
   _initFromProps () {
