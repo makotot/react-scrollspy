@@ -166,7 +166,6 @@ export class Scrollspy extends Component {
 
   render () {
     const Tag = this.props.componentTag
-    let counter = 0
     const items = React.Children.map(this.props.children, (child, idx) => {
       if (!child) {
         return null
@@ -180,7 +179,7 @@ export class Scrollspy extends Component {
       })
 
       return (
-        <ChildTag {...child.props} className={ childClass } key={ counter++ }>
+        <ChildTag {...child.props} className={ childClass } key={ idx }>
           { child.props.children }
         </ChildTag>
       )
