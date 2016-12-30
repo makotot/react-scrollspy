@@ -186,12 +186,8 @@ export class Scrollspy extends Component {
       )
     })
 
-    const itemClass = classNames({
-      [this.props.className]: this.props.className,
-    })
-
     return (
-      <Tag className={ itemClass } style={ this.props.style }>
+      <Tag className={ this.props.className } style={ this.props.style }>
         { items }
       </Tag>
     )
