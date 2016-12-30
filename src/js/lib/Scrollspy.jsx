@@ -18,6 +18,7 @@ export class Scrollspy extends Component {
     return {
       items: [],
       currentClassName: '',
+      scrolledPastClassName: '',
       style: {},
       componentTag: 'ul',
       offset: 0,
@@ -177,11 +178,10 @@ export class Scrollspy extends Component {
       }
 
       const ChildTag = child.type
-      const isScrolledPast = this.props.scrolledPastClassName && this.state.isScrolledPast[idx]
       const childClass = classNames({
         [`${ child.props.className }`]: child.props.className,
         [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
-        [`${ this.props.scrolledPastClassName }`]: isScrolledPast,
+        [`${ this.props.scrolledPastClassName }`]: this.state.isScrolledPast[idx],
       })
 
       return (
