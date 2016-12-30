@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
-export class Scrollspy extends React.Component {
+export class Scrollspy extends Component {
 
   static get PropTypes () {
     return {
-      items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      currentClassName: React.PropTypes.string.isRequired,
-      scrolledPastClassName: React.PropTypes.string,
-      style: React.PropTypes.object,
-      componentTag: React.PropTypes.string,
-      offset: React.PropTypes.number,
+      items: PropTypes.arrayOf(PropTypes.string).isRequired,
+      currentClassName: PropTypes.string.isRequired,
+      scrolledPastClassName: PropTypes.string,
+      style: PropTypes.object,
+      componentTag: PropTypes.string,
+      offset: PropTypes.number,
     }
   }
 
