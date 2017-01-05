@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import 'core-js/es6/array';  // polyfill Internet Explorer
 
 export class Scrollspy extends React.Component {
 
