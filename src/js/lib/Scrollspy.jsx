@@ -48,7 +48,7 @@ export class Scrollspy extends React.Component {
   }
 
   _fillArray (arr, val) {
-    for (var i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       arr[i] = val
     }
   }
