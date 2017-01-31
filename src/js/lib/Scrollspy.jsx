@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import classNames from 'classnames'
 
-export class Scrollspy extends React.Component {
+export class Scrollspy extends Component {
 
   static get PropTypes () {
     return {
-      items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      currentClassName: React.PropTypes.string.isRequired,
-      scrolledPastClassName: React.PropTypes.string,
-      style: React.PropTypes.object,
-      componentTag: React.PropTypes.string,
-      offset: React.PropTypes.number,
+      items: PropTypes.arrayOf(PropTypes.string).isRequired,
+      currentClassName: PropTypes.string.isRequired,
+      scrolledPastClassName: PropTypes.string,
+      style: PropTypes.object,
+      componentTag: PropTypes.string,
+      offset: PropTypes.number,
     }
   }
 
@@ -18,6 +18,7 @@ export class Scrollspy extends React.Component {
     return {
       items: [],
       currentClassName: '',
+      scrolledPastClassName: '',
       style: {},
       componentTag: 'ul',
       offset: 0,
@@ -39,12 +40,7 @@ export class Scrollspy extends React.Component {
   }
 
   _initSpyTarget (items) {
-    const targetItems = items.map((item) => {
-
-      return document.getElementById(item)
-    })
-
-    return targetItems
+    return items.map((item) => document.getElementById(item))
   }
 
   // https://github.com/makotot/react-scrollspy/pull/45
@@ -155,13 +151,7 @@ export class Scrollspy extends React.Component {
   }
 
   _handleSpy () {
-    let timer
-
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
-    }
-    timer = setTimeout(this._spy.bind(this), 100)
+    setTimeout(this._spy.bind(this), 100)
   }
 
   _initFromProps () {
@@ -189,33 +179,21 @@ export class Scrollspy extends React.Component {
 
   render () {
     const Tag = this.props.componentTag
-    let counter = 0
     const items = React.Children.map(this.props.children, (child, idx) => {
       if (!child) {
         return null
       }
 
-      const ChildTag = child.type
-      const isScrolledPast = this.props.scrolledPastClassName && this.state.isScrolledPast[idx]
-      const childClass = classNames({
-        [`${ child.props.className }`]: child.props.className,
-        [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
-        [`${ this.props.scrolledPastClassName }`]: isScrolledPast,
+      const childClass = classNames(child.props.className, {
+        [this.props.currentClassName]: this.state.inViewState[idx],
+        [this.props.scrolledPastClassName]: this.state.isScrolledPast[idx],
       })
 
-      return (
-        <ChildTag {...child.props} className={ childClass } key={ counter++ }>
-          { child.props.children }
-        </ChildTag>
-      )
-    })
-
-    const itemClass = classNames({
-      [`${ this.props.className }`]: this.props.className,
+      return React.cloneElement(child, { className: childClass })
     })
 
     return (
-      <Tag className={ itemClass } style={ this.props.style }>
+      <Tag className={ this.props.className } style={ this.props.style }>
         { items }
       </Tag>
     )
