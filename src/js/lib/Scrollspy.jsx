@@ -47,6 +47,12 @@ export class Scrollspy extends React.Component {
     return targetItems
   }
 
+  _fillArray (arr, val) {
+    for (let i = 0; i < arr.length; i++) {
+      arr[i] = val
+    }
+  }
+
   _getElemsViewState (targets) {
     let elemsInView = []
     let elemsOutView = []
@@ -75,7 +81,7 @@ export class Scrollspy extends React.Component {
         elemsOutView.pop()
         elemsOutView.push(...elemsInView)
         elemsInView = [currentContent]
-        viewStatusList.fill(false)
+        this._fillArray(viewStatusList, false)
         isInView = true
       }
 
