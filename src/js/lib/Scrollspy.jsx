@@ -88,9 +88,7 @@ export class Scrollspy extends React.Component {
         elemsOutView.pop()
         elemsOutView.push(...elemsInView)
         elemsInView = [currentContent]
-        console.log(viewStatusList)
         viewStatusList = this._fillArray(viewStatusList, false)
-        console.log(viewStatusList)
         isInView = true
       }
 
