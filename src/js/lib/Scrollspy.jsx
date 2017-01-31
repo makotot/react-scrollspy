@@ -11,6 +11,7 @@ export class Scrollspy extends React.Component {
       style: React.PropTypes.object,
       componentTag: React.PropTypes.string,
       offset: React.PropTypes.number,
+      rootNode: React.PropTypes.node,
     }
   }
 
@@ -21,6 +22,7 @@ export class Scrollspy extends React.Component {
       style: {},
       componentTag: 'ul',
       offset: 0,
+      rootNode: document.documentElement,
     }
   }
 
@@ -68,7 +70,8 @@ export class Scrollspy extends React.Component {
       }
 
       const isLastItem = i === max - 1
-      const isScrolled = (document.documentElement.scrollTop || document.body.scrollTop) > 0
+      const isScrolled = this._rootNode.scrollTop > 0
+
 
       // https://github.com/makotot/react-scrollspy/pull/26#issue-167413769
       if (this._isAtBottom() && this._isInView(currentContent) && !isInView && isLastItem && isScrolled) {
@@ -95,10 +98,10 @@ export class Scrollspy extends React.Component {
       return false
     }
     const rect = el.getBoundingClientRect()
-    const winH = window.innerHeight
-    const doc = document
-    const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop
-    const scrollBottom = scrollTop + winH
+    const root = this._rootNode
+    const rootRect = root.getBoundingClientRect()
+    const scrollTop = root.scrollTop
+    const scrollBottom = scrollTop + rootRect.height
     const elTop = rect.top + scrollTop + this.props.offset
     const elBottom = elTop + el.offsetHeight
 
@@ -106,11 +109,10 @@ export class Scrollspy extends React.Component {
   }
 
   _isAtBottom () {
-    const doc = document
-    const body = doc.body
-    const scrollTop = (doc.documentElement && doc.documentElement.scrollTop) || body.scrollTop
-    const scrollHeight = (doc.documentElement && doc.documentElement.scrollHeight) || body.scrollHeight
-    const scrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight
+    const rect = this._rootNode.getBoundingClientRect()
+    const scrollTop = this._rootNode.scrollTop
+    const scrollHeight = this._rootNode.scrollHeight
+    const scrolledToBottom = scrollTop + rect.height >= scrollHeight
 
     return scrolledToBottom
   }
@@ -142,36 +144,42 @@ export class Scrollspy extends React.Component {
   }
 
   _handleSpy () {
-    let timer
-
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
-    }
-    timer = setTimeout(this._spy.bind(this), 100)
+    setTimeout(() => this._spy(), 100)
   }
 
-  _initFromProps () {
-    const targetItems = this._initSpyTarget(this.props.items)
+  _initFromProps (props) {
+    const targetItems = this._initSpyTarget(props.items)
 
     this.setState({
       targetItems,
     })
 
-    this._spy(targetItems)
+    setTimeout(() => this._spy(targetItems), 100)
+  }
+
+  get _rootNode () {
+    return this.props.rootNode || document.documentElement
   }
 
   componentDidMount () {
-    this._initFromProps()
-    window.addEventListener('scroll', this._handleSpy)
+    this._initFromProps(this.props)
+    this._rootNode.addEventListener('scroll', this._handleSpy)
   }
 
   componentWillUnmount () {
-    window.removeEventListener('scroll', this._handleSpy)
+    this._rootNode.removeEventListener('scroll', this._handleSpy)
   }
 
-  componentWillReceiveProps () {
-    this._initFromProps()
+  componentWillReceiveProps (nextProps) {
+    this._rootNode.removeEventListener('scroll', this._handleSpy)
+
+    if (nextProps.rootNode) {
+      nextProps.rootNode.addEventListener('scroll', this._handleSpy)
+    } else {
+      document.documentElement.addEventListener('scroll', this._handleSpy)
+    }
+
+    this._initFromProps(nextProps)
   }
 
   render () {
