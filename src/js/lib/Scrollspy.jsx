@@ -102,7 +102,7 @@ export class Scrollspy extends React.Component {
     const rootRect = root.getBoundingClientRect()
     const scrollTop = root.scrollTop
     const scrollBottom = scrollTop + rootRect.height
-    const elTop = rect.top + scrollTop + this.props.offset
+    const elTop = rect.top - rootRect.top + scrollTop + this.props.offset
     const elBottom = elTop + el.offsetHeight
 
     return (elTop < scrollBottom) && (elBottom > scrollTop)
