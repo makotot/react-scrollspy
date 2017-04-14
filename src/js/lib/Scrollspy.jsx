@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react'
 import classNames from 'classnames'
 
@@ -5,13 +6,13 @@ export class Scrollspy extends React.Component {
 
   static get PropTypes () {
     return {
-      items: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      currentClassName: React.PropTypes.string.isRequired,
-      scrolledPastClassName: React.PropTypes.string,
-      style: React.PropTypes.object,
-      componentTag: React.PropTypes.string,
-      offset: React.PropTypes.number,
-    }
+      items: PropTypes.arrayOf(PropTypes.string).isRequired,
+      currentClassName: PropTypes.string.isRequired,
+      scrolledPastClassName: PropTypes.string,
+      style: PropTypes.object,
+      componentTag: PropTypes.string,
+      offset: PropTypes.number,
+    };
   }
 
   static get defaultProps () {

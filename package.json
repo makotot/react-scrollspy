@@ -67,7 +67,8 @@
     "react-addons-test-utils": ">=0.14.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "prop-types": "^15.5.8"
   },
   "keywords": [
     "react",
