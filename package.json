@@ -12,12 +12,12 @@
   ],
   "scripts": {
     "build": "./node_modules/.bin/babel ./src/js/lib/Scrollspy.jsx --out-file ./scrollspy.js",
-    "prepublish": "npm run build",
+    "prepublish": "yarn run build",
     "serve": "gulp serve",
-    "start": "npm run serve",
+    "start": "yarn run serve",
     "lint": "gulp lint",
     "docs": "gulp clean && gulp compile",
-    "test": "npm run lint && ./node_modules/.bin/ava test/test.js --verbose"
+    "test": "yarn run lint && ./node_modules/.bin/ava test/test.js --verbose"
   },
   "ava": {
     "require": [

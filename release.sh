@@ -1,7 +1,7 @@
 #!/bin/sh
 
 rm -rf release && mkdir release;
-npm run build;
+yarn run build;
 cp scrollspy.js README.md package.json gulpfile.js .eslintrc ./release
 
 rm -rf react-scrollspy.tar.gz
