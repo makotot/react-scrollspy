@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
-import throttle from './throttle';
+import throttle from './throttle'
 
 export class Scrollspy extends React.Component {
 

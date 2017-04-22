@@ -60,11 +60,11 @@ const App = React.createClass({
                 <div className="o-content__inner-body">
                   <p className="c-paragraph">Install it from <a href="https://www.npmjs.com/package/react-scrollspy" className="c-link">npm</a>.</p>
                   <pre className="c-code">
-                    <Highlight className="c-code__inner">{"$ npm install react-scrollspy"}</Highlight>
+                    <Highlight className="c-code__inner">{'$ npm install react-scrollspy'}</Highlight>
                   </pre>
                   <p className="c-paragraph">Then, import this library in your JS.</p>
                   <pre className="c-code">
-                    <Highlight className="c-code__inner">{"import { Scrollspy } from 'react-scrollspy'"}</Highlight>
+                    <Highlight className="c-code__inner">{'import { Scrollspy } from \'react-scrollspy\''}</Highlight>
                   </pre>
                 </div>
               </div>

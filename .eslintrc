@@ -53,6 +53,7 @@
     "no-underscore-dangle": [0],
     "consistent-return": [1],
     "no-path-concat": [1],
-    "no-process-exit": [1]
+    "no-process-exit": [1],
+    "react/jsx-uses-vars": [2]
   }
 }
