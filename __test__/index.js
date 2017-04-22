@@ -1,7 +1,7 @@
 import test from 'ava'
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
-import { Scrollspy } from '../src/js/lib/Scrollspy'
+import Scrollspy from '../src/js/lib/Scrollspy'
 
 test('renders correct children length', (t) => {
   const wrapper = shallow(
@@ -22,3 +22,12 @@ test('renders children with correct props', (t) => {
   )
   t.is(wrapper.find('li').prop('randomProp'), 'someText')
 })
+
+test('renders expected html tag', (t) => {
+  const defaultTag = shallow(<Scrollspy></Scrollspy>)
+  const customTag = shallow(<Scrollspy componentTag={ 'div' }></Scrollspy>)
+
+  t.is(defaultTag.type(), 'ul')
+  t.is(customTag.type(), 'div')
+})
+

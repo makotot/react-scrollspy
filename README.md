@@ -20,7 +20,7 @@ $ npm i react-scrollspy
 ## Usage
 
 ```js
-var Scrollspy = require('react-scrollspy').Scrollspy;
+import Scrollspy from 'react-scrollspy'
 
 ...
 
