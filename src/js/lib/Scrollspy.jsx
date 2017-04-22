@@ -3,7 +3,7 @@ import React from 'react'
 import classNames from 'classnames'
 import throttle from './throttle'
 
-export class Scrollspy extends React.Component {
+export default class Scrollspy extends React.Component {
 
   static get PropTypes () {
     return {

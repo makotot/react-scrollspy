@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Scrollspy } from './lib/Scrollspy.jsx'
+import Scrollspy from './lib/Scrollspy.jsx'
 import Highlight from 'react-highlight'
 
 import 'style-loader!css-loader!postcss-loader!sass-loader!../scss/app.scss'
@@ -64,7 +64,7 @@ const App = React.createClass({
                   </pre>
                   <p className="c-paragraph">Then, import this library in your JS.</p>
                   <pre className="c-code">
-                    <Highlight className="c-code__inner">{'import { Scrollspy } from \'react-scrollspy\''}</Highlight>
+                    <Highlight className="c-code__inner">{'import Scrollspy from \'react-scrollspy\''}</Highlight>
                   </pre>
                 </div>
               </div>
