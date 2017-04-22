@@ -3,6 +3,7 @@ import React from 'react'
 import { shallow, mount, render } from 'enzyme'
 import { renderJSX, JSX } from 'jsx-test-helpers'
 import { Scrollspy } from '../src/js/lib/Scrollspy'
+import './document'
 
 test('renders correct children length', (t) => {
   const wrapper = shallow(
@@ -22,4 +23,15 @@ test('renders children with correct props', (t) => {
     </Scrollspy>
   )
   t.is(wrapper.find('li').prop('randomProp'), 'someText')
+})
+test('should update targetItems after receiving new props', (t) => {
+  const wrapper = mount(
+    <Scrollspy items={ [] } />
+  )
+
+  t.is(wrapper.state('targetItems').length, 0)
+
+  wrapper.setProps({ items: [ 'section-1', 'section-2', 'section-3' ] })
+
+  t.is(wrapper.state('targetItems').length, 3)
 })

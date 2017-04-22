@@ -53,6 +53,7 @@
     "gulp-ejs": "^1.2.2",
     "gulp-eslint": "^1.1.1",
     "gulp-sass": "^2.2.0",
+    "jsdom": "3.1.2",
     "jsx-test-helpers": "^1.1.0",
     "react": ">=0.14.0",
     "react-addons-test-utils": ">=0.14.0",
