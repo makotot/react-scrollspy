@@ -62,7 +62,7 @@ export default {
   plugins: [
     new HtmlWebpackPlguin({
       filename: 'index.html',
-      inject: true,
+      inject: false,
       template: './src/templates/index.ejs',
     }),
     new webpack.LoaderOptionsPlugin({
