@@ -5,7 +5,7 @@ mkdir gh_pages
 ls -la
 cd gh_pages
 
-cp -r ../build/* .
+cp -r ../dist/* .
 
 git init
 git config user.name "${GIT_COMITTER_NAME}"
