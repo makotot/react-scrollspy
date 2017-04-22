@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import { Scrollspy } from './lib/Scrollspy.jsx'
 import Highlight from 'react-highlight'
 
+import 'style-loader!css-loader!postcss-loader!sass-loader!../scss/app.scss'
+
 const App = React.createClass({
 
   render () {

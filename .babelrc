@@ -1,4 +1,32 @@
 {
-  presets: ['es2015', 'react'],
-  plugins: ['transform-object-assign']
+  "presets": [
+    [
+      "env", {
+        "targets": {
+          "browsers": ["last 3 versions"],
+        },
+      }
+    ],
+    "react"
+  ],
+  "plugins": ["transform-object-assign", "transform-runtime"],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"],
+      "plugins": [
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                "imports": ["react"],
+                "locals": ["module"]
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
 
@@ -12,7 +12,7 @@ export class Scrollspy extends React.Component {
       style: PropTypes.object,
       componentTag: PropTypes.string,
       offset: PropTypes.number,
-    };
+    }
   }
 
   static get defaultProps () {
@@ -50,13 +50,13 @@ export class Scrollspy extends React.Component {
 
   // https://github.com/makotot/react-scrollspy/pull/45
   _fillArray (array, val) {
-    let newArray = [];
+    let newArray = []
 
     for (let i = 0, max = array.length; i < max; i++) {
       newArray[i] = val
     }
 
-    return newArray;
+    return newArray
   }
 
   _getElemsViewState (targets) {
@@ -122,8 +122,8 @@ export class Scrollspy extends React.Component {
   _isAtBottom () {
     const doc = document
     const body = doc.body
-    const scrollTop = (doc.documentElement && doc.documentElement.scrollTop) || body.scrollTop
-    const scrollHeight = (doc.documentElement && doc.documentElement.scrollHeight) || body.scrollHeight
+    const scrollTop = (doc.documentElement || body.parentNode || body).scrollTop
+    const scrollHeight = (doc.documentElement || body.parentNode || body).scrollHeight
     const scrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight
 
     return scrolledToBottom

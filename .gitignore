@@ -46,3 +46,4 @@ scrollspy.js
 *.tar.gz
 .DS_Store
 .idea
+dist/
