@@ -1,7 +1,6 @@
 import test from 'ava'
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
-import { renderJSX, JSX } from 'jsx-test-helpers'
 import { Scrollspy } from '../src/js/lib/Scrollspy'
 
 test('renders correct children length', (t) => {
