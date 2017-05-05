@@ -66,7 +66,12 @@ Style attribute to be passed to the generated &lt;ul/&gt; element [optional].
 
 ### `offset={ Number }`
 
-Offset value that adjusts to determine the elements are in the viewport.
+Offset value that adjusts to determine the elements are in the viewport [optional].
+
+### `rootEl={ String }`
+
+Name of the element of scrollable container that can be used with querySelector [optional].
+
 
 ## Development
 
