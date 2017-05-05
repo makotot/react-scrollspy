@@ -5,7 +5,7 @@ import Highlight from 'react-highlight'
 
 import 'style-loader!css-loader!postcss-loader!sass-loader!../scss/app.scss'
 
-const App = React.createClass({
+class App extends React.Component {
 
   render () {
 
@@ -149,6 +149,6 @@ const App = React.createClass({
       </div>
     )
   }
-})
+}
 
 ReactDOM.render(<App />, document.getElementById('js-app'))

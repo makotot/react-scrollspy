@@ -69,7 +69,6 @@ export default {
       options: {
         postcss: [
           require('autoprefixer')(),
-          require('postcss-normalize')(),
           require('cssnano')(),
         ],
       },
