@@ -132,6 +132,10 @@ const App = React.createClass({
                         <td className="c-table__data">offset</td>
                         <td className="c-table__data">Offset value that adjusts to determine the elements are in the viewport [optional].</td>
                       </tr>
+                      <tr>
+                        <td className="c-table__data">rootEl</td>
+                        <td className="c-table__data">Name of the element of scrollable container that can be used with <code>{'querySelector'}</code> [optional].</td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
