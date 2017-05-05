@@ -13,6 +13,7 @@ export default class Scrollspy extends React.Component {
       style: PropTypes.object,
       componentTag: PropTypes.string,
       offset: PropTypes.number,
+      rootEl: PropTypes.string,
     }
   }
 
@@ -60,6 +61,22 @@ export default class Scrollspy extends React.Component {
     return newArray
   }
 
+  _isScrolled () {
+    return this._getScrollDimension().scrollTop > 0
+  }
+
+  _getScrollDimension () {
+    const doc = document
+    const { rootEl } = this.props
+    const scrollTop = rootEl ? doc.querySelector(rootEl).scrollTop : (doc.documentElement.scrollTop || doc.body.parentNode.scrollTop || doc.body.scrollTop)
+    const scrollHeight = rootEl ? doc.querySelector(rootEl).scrollHeight : (doc.documentElement.scrollHeight || doc.body.parentNode.scrollHeight || doc.body.scrollHeight)
+
+    return {
+      scrollTop,
+      scrollHeight,
+    }
+  }
+
   _getElemsViewState (targets) {
     let elemsInView = []
     let elemsOutView = []
@@ -81,9 +98,7 @@ export default class Scrollspy extends React.Component {
       }
 
       const isLastItem = i === max - 1
-      const doc = document
-      const body = document.body
-      const isScrolled = (doc.documentElement || body.parentNode || body).scrollTop > 0
+      const isScrolled = this._isScrolled()
 
       // https://github.com/makotot/react-scrollspy/pull/26#issue-167413769
       const isLastShortItemAtBottom = this._isAtBottom() && this._isInView(currentContent) && !isInView && isLastItem && isScrolled
@@ -111,24 +126,32 @@ export default class Scrollspy extends React.Component {
     if (!el) {
       return false
     }
+
+    const { rootEl, offset } = this.props
+    let rootRect
+
+    if (rootEl) {
+      rootRect = document.querySelector(rootEl).getBoundingClientRect()
+    }
+
     const rect = el.getBoundingClientRect()
-    const winH = window.innerHeight
-    const doc = document
-    const body = doc.body
-    const scrollTop = (doc.documentElement || body.parentNode || body).scrollTop
+    const winH = rootEl ? rootRect.height : window.innerHeight
+    const { scrollTop } = this._getScrollDimension()
     const scrollBottom = scrollTop + winH
-    const elTop = rect.top + scrollTop + this.props.offset
+    const elTop = rootEl ?
+      rect.top + scrollTop - rootRect.top + offset
+      :
+      rect.top + scrollTop + offset
     const elBottom = elTop + el.offsetHeight
 
     return (elTop < scrollBottom) && (elBottom > scrollTop)
   }
 
   _isAtBottom () {
-    const doc = document
-    const body = doc.body
-    const scrollTop = (doc.documentElement || body.parentNode || body).scrollTop
-    const scrollHeight = (doc.documentElement || body.parentNode || body).scrollHeight
-    const scrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight
+    const { rootEl } = this.props
+    const { scrollTop, scrollHeight } = this._getScrollDimension()
+    const winH = rootEl ? document.querySelector(rootEl).getBoundingClientRect().height : window.innerHeight
+    const scrolledToBottom = (scrollTop + winH) >= scrollHeight
 
     return scrolledToBottom
   }
@@ -143,8 +166,10 @@ export default class Scrollspy extends React.Component {
     const scrolledPastItems = viewStatusList.map((item) => {
       if (item && !hasFoundInView) {
         hasFoundInView = true
+
         return false
       }
+
       return !hasFoundInView
     })
 
@@ -153,6 +178,7 @@ export default class Scrollspy extends React.Component {
 
   _spy (targets) {
     const elemensViewState = this._getElemsViewState(targets)
+
     this.setState({
       inViewState: elemensViewState.viewStatusList,
       isScrolledPast: elemensViewState.scrolledPast
@@ -175,11 +201,15 @@ export default class Scrollspy extends React.Component {
 
   componentDidMount () {
     this._initFromProps()
-    window.addEventListener('scroll', this._handleSpy)
+    const el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window
+
+    el.addEventListener('scroll', this._handleSpy)
   }
 
   componentWillUnmount () {
-    window.removeEventListener('scroll', this._handleSpy)
+    const el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window
+
+    el.removeEventListener('scroll', this._handleSpy)
   }
 
   componentWillReceiveProps () {
