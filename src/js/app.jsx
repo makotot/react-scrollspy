@@ -55,7 +55,7 @@ class App extends React.Component {
             <section className="o-content" style={ style } id="section-1">
               <div className="o-content__inner">
                 <div className="o-content__inner-head">
-                  <h2 className="c-heading-4 c-heading-4--upper">Getteing Started</h2>
+                  <h2 className="c-heading-4 c-heading-4--upper">Getting Started</h2>
                 </div>
                 <div className="o-content__inner-body">
                   <p className="c-paragraph">Install it from <a href="https://www.npmjs.com/package/react-scrollspy" className="c-link">npm</a>.</p>
