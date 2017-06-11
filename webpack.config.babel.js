@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
-import HtmlWebpackPlguin from 'html-webpack-plugin';
+import HtmlWebpackPlguin from 'html-webpack-plugin'
 
 export default {
   entry: {
@@ -14,7 +14,7 @@ export default {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'js/[name].js',
-    publicPath: 'http://localhost:8080',
+    publicPath: '/',
   },
   resolve: {
     modules: [
@@ -57,6 +57,7 @@ export default {
   },
   devServer: {
     contentBase: './dist',
+    publicPath: '/',
     port: 8080,
   },
   plugins: [

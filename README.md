@@ -62,7 +62,7 @@ HTML tag for Scrollspy component if you want to use other than `ul` [optional].
 
 ### `style={ Object }`
 
-Style attribute to be passed to the generated &lt;ul/&gt; element [optional]. 
+Style attribute to be passed to the generated &lt;ul/&gt; element [optional].
 
 ### `offset={ Number }`
 
@@ -71,6 +71,16 @@ Offset value that adjusts to determine the elements are in the viewport [optiona
 ### `rootEl={ String }`
 
 Name of the element of scrollable container that can be used with querySelector [optional].
+
+## Methods
+
+### `offEvent`
+
+Remove event listener of scrollspy.
+
+### `onEvent`
+
+Add event listener of scrollspy.
 
 
 ## Development
