@@ -199,17 +199,25 @@ export default class Scrollspy extends React.Component {
     this._spy(targetItems)
   }
 
-  componentDidMount () {
-    this._initFromProps()
+  offEvent() {
+    const el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window
+
+    el.removeEventListener('scroll', this._handleSpy)
+  }
+
+  onEvent() {
     const el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window
 
     el.addEventListener('scroll', this._handleSpy)
   }
 
-  componentWillUnmount () {
-    const el = this.props.rootEl ? document.querySelector(this.props.rootEl) : window
+  componentDidMount () {
+    this._initFromProps()
+    this.onEvent()
+  }
 
-    el.removeEventListener('scroll', this._handleSpy)
+  componentWillUnmount () {
+    this.offEvent()
   }
 
   componentWillReceiveProps () {
