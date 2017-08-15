@@ -29,6 +29,11 @@ class App extends React.Component {
               className="c-side-nav__list nav-list"
               style={ {fontWeight: 300} }
               offset={ -20 }
+              onUpdate={
+                () => {
+                  console.log(this)
+                }
+              }
             >
               <li className="c-side-nav__item"><a href="#section-1" className="c-side-nav__link">Getting Started</a></li>
               <li className="c-side-nav__item"><a href="#section-2" className="c-side-nav__link">Example</a></li>
@@ -135,6 +140,10 @@ class App extends React.Component {
                       <tr>
                         <td className="c-table__data">rootEl</td>
                         <td className="c-table__data">Name of the element of scrollable container that can be used with <code>{'querySelector'}</code> [optional].</td>
+                      </tr>
+                      <tr>
+                        <td className="c-table__data">onUpdate</td>
+                        <td className="c-table__data">Function to be executed when the active item has been updated [optional].</td>
                       </tr>
                     </tbody>
                   </table>
