@@ -1,3 +1,11 @@
+3.3.0 / 2017-08-16
+  * 3.3.0
+  * Merge pull request https://github.com/makotot/react-scrollspy/issues/70 from
+    makotot/onupdate
+    add onupdate
+  * mv
+  * add onupdate
+
 3.1.0 / 2017-05-05
   * 3.1.0
   * Merge pull request https://github.com/makotot/react-scrollspy/issues/59 from
