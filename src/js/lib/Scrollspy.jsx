@@ -2,7 +2,16 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
 import throttle from './throttle'
-import isEqualArray from './is-equal-array'
+
+function isEqualArray(a, b) {
+  return (
+    a.length === b.length
+    &&
+    a.every((item, index) => {
+      return item === b[index]
+    })
+  )
+}
 
 export default class Scrollspy extends React.Component {
 
