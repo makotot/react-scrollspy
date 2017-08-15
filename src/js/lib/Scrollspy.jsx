@@ -205,7 +205,7 @@ export default class Scrollspy extends React.Component {
       return
     }
 
-    this.props.onUpdate()
+    this.props.onUpdate(this.state.targetItems[this.state.inViewState.indexOf(true)])
   }
 
   _handleSpy () {

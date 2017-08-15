@@ -30,8 +30,8 @@ class App extends React.Component {
               style={ {fontWeight: 300} }
               offset={ -20 }
               onUpdate={
-                () => {
-                  console.log(this)
+                (el) => {
+                  console.log(el)
                 }
               }
             >
