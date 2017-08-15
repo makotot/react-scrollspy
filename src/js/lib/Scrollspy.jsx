@@ -3,6 +3,16 @@ import React from 'react'
 import classNames from 'classnames'
 import throttle from './throttle'
 
+function isEqualArray(a, b) {
+  return (
+    a.length === b.length
+    &&
+    a.every((item, index) => {
+      return item === b[index]
+    })
+  )
+}
+
 export default class Scrollspy extends React.Component {
 
   static get PropTypes () {
@@ -14,6 +24,7 @@ export default class Scrollspy extends React.Component {
       componentTag: PropTypes.string,
       offset: PropTypes.number,
       rootEl: PropTypes.string,
+      onUpdate: PropTypes.func,
     }
   }
 
@@ -24,6 +35,7 @@ export default class Scrollspy extends React.Component {
       style: {},
       componentTag: 'ul',
       offset: 0,
+      onUpdate() {},
     }
   }
 
@@ -178,11 +190,22 @@ export default class Scrollspy extends React.Component {
 
   _spy (targets) {
     const elemensViewState = this._getElemsViewState(targets)
+    const currentStatuses = this.state.inViewState
 
     this.setState({
       inViewState: elemensViewState.viewStatusList,
       isScrolledPast: elemensViewState.scrolledPast
+    }, () => {
+      this._update(currentStatuses)
     })
+  }
+
+  _update (prevStatuses) {
+    if (isEqualArray(this.state.inViewState, prevStatuses)) {
+      return
+    }
+
+    this.props.onUpdate()
   }
 
   _handleSpy () {
