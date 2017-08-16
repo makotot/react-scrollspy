@@ -5,7 +5,7 @@
 [![dependencies](http://img.shields.io/david/makotot/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
 [![DevDependencies](http://img.shields.io/david/dev/makotot/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
 [![License](http://img.shields.io/npm/l/react-scrollspy.svg?style=flat-square)](https://github.com/makotot/react-scrollspy)
-[![downloads](https://img.shields.io/npm/dm/react-scrollspy.svg)](https://www.npmjs.com/package/react-scrollspy)
+[![downloads](https://img.shields.io/npm/dm/react-scrollspy.svg?style=flat-square)](https://www.npmjs.com/package/react-scrollspy)
 
 > Scrollspy component
 
