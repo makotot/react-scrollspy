@@ -20,6 +20,7 @@ export default class Scrollspy extends React.Component {
       items: PropTypes.arrayOf(PropTypes.string).isRequired,
       currentClassName: PropTypes.string.isRequired,
       scrolledPastClassName: PropTypes.string,
+        summaryClassName: PropTypes.string,
       style: PropTypes.object,
       componentTag: PropTypes.string,
       offset: PropTypes.number,
@@ -247,43 +248,83 @@ export default class Scrollspy extends React.Component {
     this._initFromProps()
   }
 
-  render () {
-    const Tag = this.props.componentTag
-    const {
-      children,
-      className,
-      scrolledPastClassName,
-      style,
-    } = this.props
+    renderChildren(children, scrolledPastClassName, summaryLineClass, initialCounter) {
+        if (!children) {
+            return {
+                elements: null,
+                counter: 0,
+            }
+        }
+
+        if (!Array.isArray(children)) {
+            return {
+                elements: children,
+                counter: 0
+            }
+        }
+
     let counter = 0
-    const items = React.Children.map(children, (child, idx) => {
-      if (!child) {
-        return null
-      }
 
-      const ChildTag = child.type
-      const isScrolledPast = scrolledPastClassName && this.state.isScrolledPast[idx]
-      const childClass = classNames({
-        [`${ child.props.className }`]: child.props.className,
-        [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
-        [`${ this.props.scrolledPastClassName }`]: isScrolledPast,
-      })
+        return {
+            elements: React.Children.map(children, (child) => {
+                if (!child) {
+                    return null
+                }
 
-      return (
-        <ChildTag { ...child.props } className={ childClass } key={ counter++ }>
-          { child.props.children }
-        </ChildTag>
-      )
-    })
+                const ChildTag = child.type
 
-    const itemClass = classNames({
-      [`${ className }`]: className,
-    })
+                if (!ChildTag) {
+                    // this is an element without tag ie a raw text
+                    return child
+                }
 
-    return (
-      <Tag className={ itemClass } style={ style }>
-        { items }
-      </Tag>
-    )
-  }
+                let handleChild = true
+                if (summaryLineClass) {
+                    handleChild = child.props.className && child.props.className.includes(summaryLineClass)
+                }
+
+                const isScrolledPast = scrolledPastClassName && this.state.isScrolledPast[initialCounter + counter]
+                const childClass = classNames({
+                    [`${ child.props.className }`]: child.props.className,
+                    [`${ this.props.currentClassName }`]: handleChild && this.state.inViewState[initialCounter + counter],
+                    [`${ this.props.scrolledPastClassName }`]: handleChild && isScrolledPast,
+                })
+
+                if (handleChild) {
+                    counter++
+                }
+
+                let childrenRendered = this.renderChildren(child.props.children, scrolledPastClassName, summaryLineClass, initialCounter + counter)
+                counter += childrenRendered.counter
+
+                return (
+                    <ChildTag {...child.props} className={childClass} key={Math.random()}>
+                        {childrenRendered.elements}
+                    </ChildTag>
+                )
+            }),
+            counter: counter,
+        }
+    }
+
+    render() {
+        const Tag = this.props.componentTag
+        const {
+            children,
+            className,
+            scrolledPastClassName,
+            summaryLineClass,
+            style,
+        } = this.props
+        const items = this.renderChildren(children, scrolledPastClassName, summaryLineClass, 0).elements
+        const itemClass = classNames({
+            [`${ className }`]: className,
+        })
+
+        return (
+            <Tag className={ itemClass } style={ style }>
+                { items }
+            </Tag>
+        )
+    }
 }
