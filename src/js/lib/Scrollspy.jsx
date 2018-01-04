@@ -15,7 +15,7 @@ function isEqualArray(a, b) {
 
 export default class Scrollspy extends React.Component {
 
-  static get PropTypes () {
+  static get propTypes () {
     return {
       items: PropTypes.arrayOf(PropTypes.string).isRequired,
       currentClassName: PropTypes.string.isRequired,
