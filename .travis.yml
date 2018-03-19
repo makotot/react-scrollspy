@@ -8,7 +8,6 @@ env:
   - GIT_AUTHOR_EMAIL=makoto.ttn@gmail.com
   - secure: G8ee2qd/yrzGBxlafPPq85WG7ii/dS9ORiNcHSIIzHxD9j6jsXwOCx8S9i3zs04r/pxHtkeIAwhGDDJbZHdSR+yaEg78ZM7PFTJc4zqrwsQiYmsNlSczdPxn1YYLGq6w1f6gb0BeqtNq+f/NJpynoR2EjRgIxkUO9bOsKyivhbPiqCxnKPOdBvqRa4lgNraVyLSG5sldE+IQeeE0et0BKiXFWuad4JCYdjVGMmenuZB06CCwdvGT3gOueoZLLCTvWOcIV0jyeG78RTUubMAjBHHrvT4EY8RkJihmkhJgm4JAh6Q+7RXX73Xf2Q5SzTG4nzTeLWp8X60wU2FKqA2/yy43sxAo/vBfm0xJKUrgUNjRNd5oiWE5BTqWTxuls2c8oKCoAbTjastPwnJ+vHN0zntz+ZysyKPn4TuDVOLpLIyZMmdfE9R2nDK5eKJvE+W7gKGS1t6zDiYP9LfCbbRhKlM1xx/B4QRJT/T35YP+I1OV/a00ZoE+uVq2jYw0HQlDehFPjTyr050Snu1dmVoko+qchZIV0RqsUjhljcy1wqAgcHvaqKGWpESDk7+U8MjUYHg2QIm7j+kD+kZot7HzcugBE/9VskEXdSDb1d49a4JKVrDIyAioBDNlMGuyPIxCGobBMXlK1buhYmtShc9bPPYkxk/3nvrGYRmMFhbzsmg=
 node_js:
-- '4'
 - '6'
 - '7'
 - '8'
