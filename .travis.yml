@@ -26,6 +26,7 @@ deploy:
     tags: true
     branch: master
   provider: releases
+  skip_cleanup: true
   file:
   - "./react-scrollspy.tar.gz"
   - "./react-scrollspy.zip"
