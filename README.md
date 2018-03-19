@@ -77,6 +77,10 @@ Name of the element of scrollable container that can be used with querySelector 
 
 Function to be executed when the active item has been updated [Optional].
 
+### `highlightAllItemsInView= { Boolean }`
+
+Enables highlighting of all navigation elements that are currently visible in the viewport.
+
 ## Methods
 
 ### `offEvent`
