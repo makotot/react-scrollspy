@@ -79,7 +79,7 @@ Function to be executed when the active item has been updated [Optional].
 
 ### `highlightAllItemsInView= { Boolean }`
 
-Enables highlighting of all navigation elements that are currently visible in the viewport.
+Enables highlighting of all navigation elements that are currently visible in the viewport [Optional].
 
 ## Methods
 
