@@ -29,4 +29,5 @@ deploy:
   file:
   - "./react-scrollspy.tar.gz"
   - "./react-scrollspy.zip"
-  api_key: "bcf09fce5af1f0fc50d6d6cd9f5ad64d712c3bd9"
+  api_key: 
+  - secure: "bcf09fce5af1f0fc50d6d6cd9f5ad64d712c3bd9"
