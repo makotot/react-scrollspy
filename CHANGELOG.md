@@ -1,7 +1,7 @@
 3.3.6 / 2018-03-19
 	* 3.3.6
-	* Added ability to highlight all scrollspy items that are visible in the viewport
-	* Added window resize listerner
+	* Added ability to highlight all navigation elements that are visible in the viewport
+	* Added window resize listener
 	
 3.3.1 / 2017-08-16
   * 3.3.1
