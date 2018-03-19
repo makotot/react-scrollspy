@@ -37,7 +37,7 @@ export default class Scrollspy extends React.Component {
       componentTag: 'ul',
       offset: 0,
       onUpdate() {},
-      hightlightAllItemsInView: false,
+      getAllItemsInView: false,
     }
   }
 
@@ -239,10 +239,12 @@ export default class Scrollspy extends React.Component {
   componentDidMount () {
     this._initFromProps()
     this.onEvent()
+    window.addEventListener('resize', this._handleSpy);
   }
 
   componentWillUnmount () {
     this.offEvent()
+    window.removeEventListener('resize', this._handleSpy);
   }
 
   componentWillReceiveProps () {
