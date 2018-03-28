@@ -270,10 +270,14 @@ export default class Scrollspy extends React.Component {
         [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
         [`${ this.props.scrolledPastClassName }`]: isScrolledPast,
       })
+      const grandchildren = child.props.children
+      const grandchildrenWithProps = React.Children.map(grandchildren, grandchild =>
+        React.cloneElement(grandchild, { 'aria-current': this.state.inViewState[idx] ? this.props.currentAria : 'false' })
+      )
 
       return (
-        <ChildTag { ...child.props } aria-current={ this.state.inViewState[idx] ? this.props.currentAria : 'false' } className={ childClass } key={ counter++ }>
-          { child.props.children }
+        <ChildTag { ...child.props } className={ childClass } key={ counter++ }>
+          { grandchildrenWithProps }
         </ChildTag>
       )
     })

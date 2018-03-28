@@ -31,3 +31,12 @@ test('renders expected html tag', (t) => {
   t.is(customTag.type(), 'div')
 })
 
+test('renders child with aria-current attribute', (t) => {
+  const wrapper = shallow(
+    <Scrollspy items={ ['section-1'] } currentClassName="is-current" currentAria="location">
+      <li className="" randomProp="someText"><a href="#section-1">section 1</a></li>
+    </Scrollspy>
+  )
+  t.is(wrapper.find('li a').prop('aria-current'), 'false')
+})
+
