@@ -1,8 +1,10 @@
-import webpack from 'webpack'
-import path from 'path'
-import HtmlWebpackPlguin from 'html-webpack-plugin'
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlguin = require('html-webpack-plugin')
 
-export default {
+console.log(process.env.mode)
+module.exports = {
+  mode: 'development',
   entry: {
     app: [
       './src/js/app.jsx',
@@ -55,10 +57,18 @@ export default {
       },
     ],
   },
-  devServer: {
-    contentBase: './dist',
-    publicPath: '/',
-    port: 8080,
+  serve: {
+    dev: {
+      contentBase: './dist',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+    hot: {
+      hot: true,
+      reload: true,
+    },
+    host: '0.0.0.0',
   },
   plugins: [
     new HtmlWebpackPlguin({

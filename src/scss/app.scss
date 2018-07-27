@@ -2,16 +2,14 @@
 
 @import "../../node_modules/normalize.css/normalize.css";
 
-@import
-  "base/base";
+@import "base/base";
 
 $color_primary: #ff6464;
 $color_base: #444;
 $color_base_opposite: #fff;
 $paragraph_space: 1.6rem;
 
-@import
-  "../../node_modules/construct-css/src/scss/construct";
+@import "../../node_modules/construct-css/src/scss/construct";
 
 @import
   "layouts/container";
