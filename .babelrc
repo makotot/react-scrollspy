@@ -2,6 +2,7 @@
   "presets": [
     [
       "env", {
+        "modules": false,
         "targets": {
           "browsers": ["last 3 versions"],
         },
@@ -12,20 +13,8 @@
   "plugins": ["transform-object-assign", "transform-runtime"],
   "env": {
     "development": {
-      "presets": ["react-hmre"],
       "plugins": [
-        [
-          "react-transform",
-          {
-            "transforms": [
-              {
-                "transform": "react-transform-hmr",
-                "imports": ["react"],
-                "locals": ["module"]
-              }
-            ]
-          }
-        ]
+        "react-hot-loader/babel"
       ]
     }
   }

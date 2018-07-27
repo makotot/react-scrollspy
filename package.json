@@ -59,6 +59,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-highlight": "^0.12.0",
+    "react-hot-loader": "^4.3.4",
     "react-test-renderer": "^16.4.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",

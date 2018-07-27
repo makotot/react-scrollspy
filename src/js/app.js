@@ -1,14 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Scrollspy from './lib/Scrollspy.jsx'
 import Highlight from 'react-highlight'
 
-import 'style-loader!css-loader!postcss-loader!sass-loader!../scss/app.scss'
-
-class App extends React.Component {
+export default class App extends React.Component {
 
   render () {
-
     const style = {
       minHeight: '600px',
     }
@@ -159,5 +155,3 @@ class App extends React.Component {
     )
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('js-app'))

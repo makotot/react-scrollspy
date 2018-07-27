@@ -2,12 +2,11 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlguin = require('html-webpack-plugin')
 
-console.log(process.env.mode)
 module.exports = {
   mode: 'development',
   entry: {
     app: [
-      './src/js/app.jsx',
+      './src/js/index.js',
     ],
   },
   resolve: {
