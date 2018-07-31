@@ -10,7 +10,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['', 'js', 'jsx'],
+    extensions: ['', 'js'],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -26,7 +26,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /(node_modules)/,
         include: [
           path.resolve(__dirname, 'src/js'),
@@ -41,7 +41,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /(node_modules)/,
         include: [
           path.resolve(__dirname, 'src/js'),

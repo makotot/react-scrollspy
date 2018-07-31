@@ -1,16 +1,15 @@
 import React from 'react'
-import Scrollspy from './lib/Scrollspy.jsx'
+import Scrollspy from './lib/scrollspy'
 import Highlight from 'react-highlight'
+
+const version = require('../../package.json').version
+const style = {
+  minHeight: '600px',
+}
 
 export default class App extends React.Component {
 
   render () {
-    const style = {
-      minHeight: '600px',
-    }
-
-    const version = require('../../package.json').version
-
     return (
       <div className="o-wrapper">
 
@@ -21,8 +20,6 @@ export default class App extends React.Component {
           <nav className="c-side-nav__body">
             <Scrollspy
               items={ ['section-1', 'section-2', 'section-3'] }
-              currentClassName="is-current"
-              className="c-side-nav__list nav-list"
               style={ {fontWeight: 300} }
               offset={ -20 }
               onUpdate={
@@ -31,9 +28,23 @@ export default class App extends React.Component {
                 }
               }
             >
-              <li className="c-side-nav__item"><a href="#section-1" className="c-side-nav__link">Getting Started</a></li>
-              <li className="c-side-nav__item"><a href="#section-2" className="c-side-nav__link">Example</a></li>
-              <li className="c-side-nav__item"><a href="#section-3" className="c-side-nav__link">Props</a></li>
+              {
+                ({ inViewState, isScrolledPast, isCurrentNavId }) => {
+                  return (
+                    <ul className="c-side-nav__list nav-list">
+                      <li className={ `c-side-nav__item ${ isCurrentNavId('section-1') && 'is-current' }` }>
+                        <a href="#section-1" className="c-side-nav__link">Getting Started</a>
+                      </li>
+                      <li className={ `c-side-nav__item ${ isCurrentNavId('section-2') && 'is-current' }` }>
+                        <a href="#section-2" className="c-side-nav__link">Example</a>
+                      </li>
+                      <li className={ `c-side-nav__item ${ isCurrentNavId('section-3') && 'is-current' }` }>
+                        <a href="#section-3" className="c-side-nav__link">Props</a>
+                      </li>
+                    </ul>
+                  )
+                }
+              }
             </Scrollspy>
           </nav>
         </div>

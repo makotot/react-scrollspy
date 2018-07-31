@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types'
 import React from 'react'
-import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import throttle from './throttle'
 
 function isEqualArray(a, b) {
@@ -15,37 +14,32 @@ function isEqualArray(a, b) {
 
 export default class Scrollspy extends React.Component {
 
-  static get propTypes () {
+  static get propTypes() {
     return {
       items: PropTypes.arrayOf(PropTypes.string).isRequired,
-      currentClassName: PropTypes.string.isRequired,
       scrolledPastClassName: PropTypes.string,
-      style: PropTypes.object,
-      componentTag: PropTypes.string,
       offset: PropTypes.number,
       rootEl: PropTypes.string,
       onUpdate: PropTypes.func,
+      render: PropTypes.func,
+      children: PropTypes.func,
     }
   }
 
-  static get defaultProps () {
+  static get defaultProps() {
     return {
-      items: [],
-      currentClassName: '',
-      style: {},
-      componentTag: 'ul',
       offset: 0,
       onUpdate() {},
     }
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
       targetItems: [],
       inViewState: [],
-      isScrolledPast: []
+      isScrolledPast: [],
     }
 
     // manually bind as ES6 does not apply this
@@ -53,7 +47,20 @@ export default class Scrollspy extends React.Component {
     this._handleSpy = this._handleSpy.bind(this)
   }
 
-  _initSpyTarget (items) {
+  componentDidMount() {
+    this._initFromProps()
+    this.onEvent()
+  }
+
+  componentWillUnmount() {
+    this.offEvent()
+  }
+
+  componentWillReceiveProps() {
+    this._initFromProps()
+  }
+
+  _initSpyTarget(items) {
     const targetItems = items.map((item) => {
 
       return document.getElementById(item)
@@ -63,7 +70,8 @@ export default class Scrollspy extends React.Component {
   }
 
   // https://github.com/makotot/react-scrollspy/pull/45
-  _fillArray (array, val) {
+  // Array.prototype.fill() is not supported in IE 11
+  _fillArray(array, val) {
     let newArray = []
 
     for (let i = 0, max = array.length; i < max; i++) {
@@ -73,11 +81,11 @@ export default class Scrollspy extends React.Component {
     return newArray
   }
 
-  _isScrolled () {
+  _isScrolled() {
     return this._getScrollDimension().scrollTop > 0
   }
 
-  _getScrollDimension () {
+  _getScrollDimension() {
     const doc = document
     const { rootEl } = this.props
     const scrollTop = rootEl ? doc.querySelector(rootEl).scrollTop : (doc.documentElement.scrollTop || doc.body.parentNode.scrollTop || doc.body.scrollTop)
@@ -89,13 +97,11 @@ export default class Scrollspy extends React.Component {
     }
   }
 
-  _getElemsViewState (targets) {
+  _getElemsViewState(targets) {
     let elemsInView = []
     let elemsOutView = []
     let viewStatusList = []
-
     const targetItems = targets ? targets : this.state.targetItems
-
     let hasInViewAlready = false
 
     for (let i = 0, max = targetItems.length; i < max; i++) {
@@ -134,7 +140,7 @@ export default class Scrollspy extends React.Component {
     }
   }
 
-  _isInView (el) {
+  _isInView(el) {
     if (!el) {
       return false
     }
@@ -189,12 +195,12 @@ export default class Scrollspy extends React.Component {
   }
 
   _spy (targets) {
-    const elemensViewState = this._getElemsViewState(targets)
+    const elementsViewState = this._getElemsViewState(targets)
     const currentStatuses = this.state.inViewState
 
     this.setState({
-      inViewState: elemensViewState.viewStatusList,
-      isScrolledPast: elemensViewState.scrolledPast
+      inViewState: elementsViewState.viewStatusList,
+      isScrolledPast: elementsViewState.scrolledPast
     }, () => {
       this._update(currentStatuses)
     })
@@ -234,56 +240,25 @@ export default class Scrollspy extends React.Component {
     el.addEventListener('scroll', this._handleSpy)
   }
 
-  componentDidMount () {
-    this._initFromProps()
-    this.onEvent()
+  isCurrentNavIndex = (index) => {
+    return this.state.inViewState[index]
   }
 
-  componentWillUnmount () {
-    this.offEvent()
+  isCurrentNavId = (id) => {
+    const ids = this.state.targetItems.map(item => item.getAttribute('id'))
+    const idIndex = ids.indexOf(id)
+
+    return this.state.inViewState.indexOf(true) === idIndex
   }
 
-  componentWillReceiveProps () {
-    this._initFromProps()
-  }
+  render() {
+    const render = this.props.render || this.props.children
 
-  render () {
-    const Tag = this.props.componentTag
-    const {
-      children,
-      className,
-      scrolledPastClassName,
-      style,
-    } = this.props
-    let counter = 0
-    const items = React.Children.map(children, (child, idx) => {
-      if (!child) {
-        return null
-      }
-
-      const ChildTag = child.type
-      const isScrolledPast = scrolledPastClassName && this.state.isScrolledPast[idx]
-      const childClass = classNames({
-        [`${ child.props.className }`]: child.props.className,
-        [`${ this.props.currentClassName }`]: this.state.inViewState[idx],
-        [`${ this.props.scrolledPastClassName }`]: isScrolledPast,
-      })
-
-      return (
-        <ChildTag { ...child.props } className={ childClass } key={ counter++ }>
-          { child.props.children }
-        </ChildTag>
-      )
+    return render({
+      inViewState: this.state.inViewState,
+      isScrolledPast: this.state.isScrolledPast,
+      isCurrentNavIndex: this.isCurrentNavIndex,
+      isCurrentNavId: this.isCurrentNavId,
     })
-
-    const itemClass = classNames({
-      [`${ className }`]: className,
-    })
-
-    return (
-      <Tag className={ itemClass } style={ style }>
-        { items }
-      </Tag>
-    )
   }
 }
