@@ -2,7 +2,7 @@ import React from 'react'
 import Scrollspy from './lib/scrollspy'
 import Highlight from 'react-highlight'
 
-const version = require('../../package.json').version
+import { version } from '../../package.json'
 const style = {
   minHeight: '600px',
 }
@@ -11,13 +11,13 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div className="o-wrapper">
+      <div>
 
-        <div className="o-sidebar o-sidebar--fixed-left c-side-nav">
-          <div className="c-side-nav__head">
-            <h2 className="c-side-nav__heading c-heading-4 c-heading-4--upper u-font-italic">react<br />scrollspy</h2>
+        <div>
+          <div>
+            <h2>react scrollspy</h2>
           </div>
-          <nav className="c-side-nav__body">
+          <nav>
             <Scrollspy
               items={ ['section-1', 'section-2', 'section-3'] }
               style={ {fontWeight: 300} }
@@ -31,15 +31,15 @@ export default class App extends React.Component {
               {
                 ({ inViewState, isScrolledPast, isCurrentNavId }) => {
                   return (
-                    <ul className="c-side-nav__list nav-list">
-                      <li className={ `c-side-nav__item ${ isCurrentNavId('section-1') && 'is-current' }` }>
-                        <a href="#section-1" className="c-side-nav__link">Getting Started</a>
+                    <ul>
+                      <li className={ ` ${ isCurrentNavId('section-1') && 'is-current' }` }>
+                        <a href="#section-1">Getting Started</a>
                       </li>
-                      <li className={ `c-side-nav__item ${ isCurrentNavId('section-2') && 'is-current' }` }>
-                        <a href="#section-2" className="c-side-nav__link">Example</a>
+                      <li className={ ` ${ isCurrentNavId('section-2') && 'is-current' }` }>
+                        <a href="#section-2">Example</a>
                       </li>
-                      <li className={ `c-side-nav__item ${ isCurrentNavId('section-3') && 'is-current' }` }>
-                        <a href="#section-3" className="c-side-nav__link">Props</a>
+                      <li className={ ` ${ isCurrentNavId('section-3') && 'is-current' }` }>
+                        <a href="#section-3">Props</a>
                       </li>
                     </ul>
                   )
@@ -49,46 +49,46 @@ export default class App extends React.Component {
           </nav>
         </div>
 
-        <div className="o-main o-main--with-sidebar o-main--fixed-left-sidebar">
-          <div className="container">
+        <div>
+          <div>
             <section style={ style }>
-              <div className="o-hero u-align-left">
-                <h1 className="c-heading-4 c-heading-4--upper headline">React Scrollspy</h1>
-                <ul className="o-inline-list">
-                  <li className="o-inline-list__item">
-                    <span className="o-hero__sub-heading c-lead">Scrollspy Component</span>
+              <div>
+                <h1>React Scrollspy</h1>
+                <ul>
+                  <li>
+                    <span>Scrollspy Component</span>
                   </li>
-                  <li className="o-inline-list__item">
-                    <span className="c-tag">v{ version }</span>
+                  <li>
+                    <span>v{ version }</span>
                   </li>
                 </ul>
               </div>
             </section>
-            <section className="o-content" style={ style } id="section-1">
-              <div className="o-content__inner">
-                <div className="o-content__inner-head">
-                  <h2 className="c-heading-4 c-heading-4--upper">Getting Started</h2>
+            <section style={ style } id="section-1">
+              <div>
+                <div>
+                  <h2>Getting Started</h2>
                 </div>
-                <div className="o-content__inner-body">
-                  <p className="c-paragraph">Install it from <a href="https://www.npmjs.com/package/react-scrollspy" className="c-link">npm</a>.</p>
-                  <pre className="c-code">
-                    <Highlight className="c-code__inner">{'$ npm install react-scrollspy'}</Highlight>
+                <div>
+                  <p>Install it from <a href="https://www.npmjs.com/package/react-scrollspy">npm</a>.</p>
+                  <pre>
+                    <Highlight>{'$ npm install react-scrollspy'}</Highlight>
                   </pre>
-                  <p className="c-paragraph">Then, import this library in your JS.</p>
-                  <pre className="c-code">
-                    <Highlight className="c-code__inner">{'import Scrollspy from \'react-scrollspy\''}</Highlight>
+                  <p>Then, import this library in your JS.</p>
+                  <pre>
+                    <Highlight>{'import Scrollspy from \'react-scrollspy\''}</Highlight>
                   </pre>
                 </div>
               </div>
             </section>
             <section style={ style } id="section-2">
-              <div className="o-content__inner">
-                <div className="o-content__inner-head">
-                  <h3 className="c-heading-4 c-heading-4--upper">Example</h3>
+              <div>
+                <div>
+                  <h3>Example</h3>
                 </div>
-                <div className="o-content__inner-body">
-                  <pre className="c-code u-background-opposite">
-                    <Highlight className="c-code__inner">
+                <div>
+                  <pre>
+                    <Highlight>
 {`<div>
   <div>
     <section id="section-1">section 1</section>
@@ -107,50 +107,50 @@ export default class App extends React.Component {
               </div>
             </section>
             <section style={ style } id="section-3">
-              <div className="o-content__inner">
-                <div className="o-content__inner-head">
-                  <h3 className="c-heading-4 c-heading-4--upper">Props</h3>
+              <div>
+                <div>
+                  <h3>Props</h3>
                 </div>
-                <div className="o-content__inner-body">
-                  <table className="c-table">
+                <div>
+                  <table>
                     <thead>
                       <tr>
-                        <th className="c-table__head">Props</th>
-                        <th className="c-table__head">Summary</th>
+                        <th>Props</th>
+                        <th>Summary</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="c-table__data">items</td>
-                        <td className="c-table__data">Id list of target contents.</td>
+                        <td>items</td>
+                        <td>Id list of target contents.</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">currentClassName</td>
-                        <td className="c-table__data">Class name that apply to the navigation element paired with the content element in viewport.</td>
+                        <td>currentClassName</td>
+                        <td>Class name that apply to the navigation element paired with the content element in viewport.</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">scrolledPastClassName</td>
-                        <td className="c-table__data">Class name that apply to the navigation elements that have been scrolled past [optional].</td>
+                        <td>scrolledPastClassName</td>
+                        <td>Class name that apply to the navigation elements that have been scrolled past [optional].</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">componentTag</td>
-                        <td className="c-table__data">HTML tag for Scrollspy component if you want to use other than <code>{'<ul/>'}</code> [optional].</td>
+                        <td>componentTag</td>
+                        <td>HTML tag for Scrollspy component if you want to use other than <code>{'<ul/>'}</code> [optional].</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">style</td>
-                        <td className="c-table__data">Style attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
+                        <td>style</td>
+                        <td>Style attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">offset</td>
-                        <td className="c-table__data">Offset value that adjusts to determine the elements are in the viewport [optional].</td>
+                        <td>offset</td>
+                        <td>Offset value that adjusts to determine the elements are in the viewport [optional].</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">rootEl</td>
-                        <td className="c-table__data">Name of the element of scrollable container that can be used with <code>{'querySelector'}</code> [optional].</td>
+                        <td>rootEl</td>
+                        <td>Name of the element of scrollable container that can be used with <code>{'querySelector'}</code> [optional].</td>
                       </tr>
                       <tr>
-                        <td className="c-table__data">onUpdate</td>
-                        <td className="c-table__data">Function to be executed when the active item has been updated [optional].</td>
+                        <td>onUpdate</td>
+                        <td>Function to be executed when the active item has been updated [optional].</td>
                       </tr>
                     </tbody>
                   </table>
@@ -158,7 +158,7 @@ export default class App extends React.Component {
               </div>
             </section>
           </div>
-          <footer className="o-footer c-footer">
+          <footer>
             <div>Licenced under MIT</div>
           </footer>
         </div>

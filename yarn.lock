@@ -2373,10 +2373,6 @@ constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
 
-"construct-css@https://github.com/makotot/construct.git":
-  version "0.1.0"
-  resolved "https://github.com/makotot/construct.git#5f70c6f59a01729828aef0afe9c61fa824c25075"
-
 content-disposition@~0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.2.tgz#0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4"
