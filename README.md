@@ -57,9 +57,9 @@ Class name that apply to the navigation element paired with the content element 
 
 Class name that apply to the navigation elements that have been scrolled past [optional].
 
-### `componentTag={ String }`
+### `componentTag={ String | Function }`
 
-HTML tag for Scrollspy component if you want to use other than `ul` [optional].
+HTML tag or React Component for Scrollspy component if you want to use other than `ul` [optional].
 
 ### `style={ Object }`
 
