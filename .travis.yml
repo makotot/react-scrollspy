@@ -1,12 +1,11 @@
 language: node_js
 env:
   global:
-  - GH_REPO="makotot/react-scrollspy"
-  - GIT_COMMITTER_NAME=makotot
-  - GIT_COMMITTER_EMAIL=makoto.ttn@gmail.com
+  - GH_REPO="h3mpti/react-scrollspy"
+  - GIT_COMMITTER_NAME=h3mpti
+  - GIT_COMMITTER_EMAIL=Xplosion2k@web.de
   - GIT_AUTHOR_NAME=makotot
-  - GIT_AUTHOR_EMAIL=makoto.ttn@gmail.com
-  - secure: G8ee2qd/yrzGBxlafPPq85WG7ii/dS9ORiNcHSIIzHxD9j6jsXwOCx8S9i3zs04r/pxHtkeIAwhGDDJbZHdSR+yaEg78ZM7PFTJc4zqrwsQiYmsNlSczdPxn1YYLGq6w1f6gb0BeqtNq+f/NJpynoR2EjRgIxkUO9bOsKyivhbPiqCxnKPOdBvqRa4lgNraVyLSG5sldE+IQeeE0et0BKiXFWuad4JCYdjVGMmenuZB06CCwdvGT3gOueoZLLCTvWOcIV0jyeG78RTUubMAjBHHrvT4EY8RkJihmkhJgm4JAh6Q+7RXX73Xf2Q5SzTG4nzTeLWp8X60wU2FKqA2/yy43sxAo/vBfm0xJKUrgUNjRNd5oiWE5BTqWTxuls2c8oKCoAbTjastPwnJ+vHN0zntz+ZysyKPn4TuDVOLpLIyZMmdfE9R2nDK5eKJvE+W7gKGS1t6zDiYP9LfCbbRhKlM1xx/B4QRJT/T35YP+I1OV/a00ZoE+uVq2jYw0HQlDehFPjTyr050Snu1dmVoko+qchZIV0RqsUjhljcy1wqAgcHvaqKGWpESDk7+U8MjUYHg2QIm7j+kD+kZot7HzcugBE/9VskEXdSDb1d49a4JKVrDIyAioBDNlMGuyPIxCGobBMXlK1buhYmtShc9bPPYkxk/3nvrGYRmMFhbzsmg=
+  - GIT_AUTHOR_EMAIL=makoto.ttn@gmail.com  
 node_js:
 - '6'
 - '7'
@@ -26,8 +25,9 @@ deploy:
     tags: true
     branch: master
   provider: releases
+  skip_cleanup: true
   file:
   - "./react-scrollspy.tar.gz"
   - "./react-scrollspy.zip"
-  api_key:
-    - secure: QuNZkL9fPvI8t3fmDc29+AY/V3beauY1vOFXmBhfyujLte1AwTLzFuyAVzNnUw/YVWKctd8UKTumPVWh4H+92RSzr2Pg/BJmzb2zDGSDacB5tSD5zNSp7wp+RXkUW2OPUlAPfeMvH06GA37AisKWQNE+qIkG2dVyLNwIow426rND8jpakv1dFcHcXSyb2CZF32iD9ncTSCXQFTkko1UvEF9P5zIly9hzlE3P08k8eArAXDOqimyDLV34BUtsMllEWZMin5mOxJ3z9Gra+eTY35z5C1YHk0jmD8CCREd+AIi8TQXSfPCPeW2/VNdWUFc2BUGZRJnaYNgmFHgOW3ySs2gvRGbmuC2ig+KhNDFAEZBh7PS1XXWLPftYNXLR/YwKR5TcxJAcNHYrI8uCzuDxuzxI+0VFnnNLoiblJb/pmNLD5vrtXc7JabsGVmXL5NliWY5yRJ1kdPlkrvCpjOmtIW1FhDIeuWuGGktj3mUIaOL7LWY/MtMi+SfyFnwLLCB6fkFmqOy8T1iw0/5yDOLZwosKzIPLFVOuWkd6VzwJ9YXjnR6Ou9kNxHw1ANi76YCX91JieNvvWJBXzPDfrzR+mhrAeUP5e4PT0aHPZQ1P1WqprZLQbMdjzUMpbhjl4w0FR3bwHpex7qJE3QPEQygz1W1IVWKkmIAymSv6I+CEy9o=
+  api_key: 
+  - secure: Qmr2OE9OjgI5DPBsSu87WABA42OoAiq2MT/wz4BxrG7nDVvEUVCbShl8njesa2BM3BF5YPePeTvvxLP05Jma/JoOE/OL7kpoDZ6mgb/WPs13hkAbLqSoCU34DUyBwnkOC+nXsmXe3FJ1+NRaaoPgQnt71yKwKDK5ZWaZ70++Utby+tkpFY4y/Ef3rqTpoXFmDogv7aW+DLRXw3tUPH67bcKAG5pP1eGwyVKvMRrSAdODWlnj8Q+HU7ToBVG2T3MBmfdFvhqAMxlUWyCti6yLoyrjB7fs9+3Bp7FzgG1vSnqZA14HNTJvBll07XhvEvRaNkzob1xxvbZqDW6sniT2WRqZvO0NAr5wdybB2un4llPJDgzuNfwgI0CjqEPzF+8k/nMsd4o7nkM3zb2ThcbTwplh39NMaXfqp/zJ0D9bcfBvtwNv1U5wnRJG6QyZtyUSET70qGGkIAyIcE6qfoR6Meb0mLI17HeGpVz/fs4u03/l79RZi4tqtpmQDufQ8R8l1wR+cerQ0b7BpkwC0E7M68yL4xPhCekjbh7fdmSL+vAv8cKBKfhc2AOjWUv35z8ctrn38KEa3YbzQf1Rf6KYV5LuG1kjCrilgSz2iuvzZacohDZYcvUIIJE12nr+Ce6BuEL1EiqDs88CKQg/F5u9YkENoGzRdA3U8pr7aWptDds=

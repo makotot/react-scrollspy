@@ -25,6 +25,7 @@ export default class Scrollspy extends React.Component {
       offset: PropTypes.number,
       rootEl: PropTypes.string,
       onUpdate: PropTypes.func,
+      highlightAllItemsInView: PropTypes.bool,
     }
   }
 
@@ -36,6 +37,7 @@ export default class Scrollspy extends React.Component {
       componentTag: 'ul',
       offset: 0,
       onUpdate() {},
+      highlightAllItemsInView: false,
     }
   }
 
@@ -103,7 +105,7 @@ export default class Scrollspy extends React.Component {
       let isInView = hasInViewAlready ? false : this._isInView(currentContent)
 
       if (isInView) {
-        hasInViewAlready = true
+        hasInViewAlready = this.props.highlightAllItemsInView ? false : true;
         elemsInView.push(currentContent)
       } else {
         elemsOutView.push(currentContent)
@@ -237,10 +239,12 @@ export default class Scrollspy extends React.Component {
   componentDidMount () {
     this._initFromProps()
     this.onEvent()
+    window.addEventListener('resize', this._handleSpy);
   }
 
   componentWillUnmount () {
     this.offEvent()
+    window.removeEventListener('resize', this._handleSpy);
   }
 
   componentWillReceiveProps () {
