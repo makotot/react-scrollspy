@@ -51,6 +51,7 @@
     "consistent-return": [1],
     "no-path-concat": [1],
     "no-process-exit": [1],
-    "react/jsx-uses-vars": [2]
+    "react/jsx-uses-vars": [2],
+    "react/jsx-uses-react": [1]
   }
 }
