@@ -1,7 +1,7 @@
 import test from 'ava'
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
-import Scrollspy from '../src/js/lib/Scrollspy'
+import Scrollspy from '../src/js/lib/scrollspy'
 
 test('renders correct children length', (t) => {
   const wrapper = shallow(
