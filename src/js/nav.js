@@ -1,5 +1,5 @@
 import React from 'react'
-import Scrollspy from './lib/Scrollspy.jsx'
+import Scrollspy from './lib/scrollspy'
 
 const Nav = () => (
   <nav className="nav">

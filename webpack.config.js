@@ -1,30 +1,25 @@
-import webpack from 'webpack'
-import path from 'path'
-import HtmlWebpackPlguin from 'html-webpack-plugin'
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlguin = require('html-webpack-plugin')
 
-export default {
+module.exports = {
   mode: 'production',
   entry: {
-    app: [
-      './src/js/app.jsx',
-    ],
     'app.min': [
-      './src/js/app.jsx',
+      './src/js/app.js',
     ],
   },
   resolve: {
-    extensions: ['', 'js', 'jsx'],
+    extensions: ['*', '.js'],
+    modules: [
+      'node_modules',
+      path.join(__dirname, 'src/js'),
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'js/[name].js',
     publicPath: '/',
-  },
-  resolve: {
-    modules: [
-      'node_modules',
-      path.join(__dirname, 'src'),
-    ],
   },
   module: {
     rules: [
@@ -35,6 +30,12 @@ export default {
           path.resolve(__dirname, 'src/scss'),
         ],
         use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
           {
             loader: 'postcss-loader',
             options: {
