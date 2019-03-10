@@ -3,8 +3,12 @@ import path from 'path'
 import HtmlWebpackPlguin from 'html-webpack-plugin'
 
 export default {
+  mode: 'production',
   entry: {
     app: [
+      './src/js/app.jsx',
+    ],
+    'app.min': [
       './src/js/app.jsx',
     ],
   },
@@ -24,6 +28,28 @@ export default {
   },
   module: {
     rules: [
+      {
+        test: /\.scss$/,
+        exclude: /(node_modules)/,
+        include: [
+          path.resolve(__dirname, 'src/scss'),
+        ],
+        use: [
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                require('postcss-flexbugs-fixes')(),
+                require('autoprefixer')(),
+                require('cssnano')(),
+              ],
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
@@ -63,16 +89,7 @@ export default {
   plugins: [
     new HtmlWebpackPlguin({
       filename: 'index.html',
-      inject: false,
       template: './src/templates/index.ejs',
-    }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          require('autoprefixer')(),
-          require('cssnano')(),
-        ],
-      },
     }),
   ],
 }
