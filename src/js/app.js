@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Highlight from 'react-highlight'
-import Nav from './nav.jsx'
-import Footer from './footer.jsx'
-import PropTable from './props-table.jsx'
+import Nav from './nav'
+import Footer from './footer'
+import PropTable from './props-table'
 
-import 'style-loader!css-loader!postcss-loader!sass-loader!../scss/app.scss'
+import '../scss/app.scss'
 
 const version = require('../../package.json').version
 

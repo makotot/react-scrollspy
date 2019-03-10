@@ -1,32 +1,16 @@
 {
   "presets": [
     [
-      "env", {
+      "@babel/preset-env", {
         "targets": {
           "browsers": ["last 3 versions"],
         },
       }
     ],
-    "react"
+    "@babel/preset-react"
   ],
-  "plugins": ["transform-object-assign", "transform-runtime"],
-  "env": {
-    "development": {
-      "presets": ["react-hmre"],
-      "plugins": [
-        [
-          "react-transform",
-          {
-            "transforms": [
-              {
-                "transform": "react-transform-hmr",
-                "imports": ["react"],
-                "locals": ["module"]
-              }
-            ]
-          }
-        ]
-      ]
-    }
-  }
+  "plugins": [
+    "@babel/plugin-transform-object-assign",
+    "@babel/plugin-transform-runtime"
+  ]
 }
