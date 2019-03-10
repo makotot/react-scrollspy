@@ -42582,7 +42582,7 @@ module.exports = function (css) {
 
 module.exports = {
 	"name": "react-scrollspy",
-	"version": "3.3.9",
+	"version": "3.3.10",
 	"description": "react scrollspy component",
 	"main": "./lib/Scrollspy.js",
 	"files": [
