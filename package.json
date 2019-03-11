@@ -17,12 +17,19 @@
     "build": "NODE_ENV=production ./node_modules/.bin/babel ./src/js/lib --out-dir ./lib",
     "test": "NODE_ENV=test ./node_modules/.bin/ava __test__/*.js --verbose",
     "prepublish": "yarn run build",
-    "deploy": "yarn run docs && gh-pages -d ./dist"
+    "deploy": "yarn run docs && gh-pages -d ./dist",
+    "release": "standard-version"
   },
   "ava": {
     "require": [
       "@babel/register"
     ]
+  },
+  "standard-version": {
+    "skip": {
+      "tag": true,
+      "bump": true
+    }
   },
   "repository": {
     "type": "git",
@@ -59,6 +66,7 @@
     "react-highlight": "^0.10.0",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^7.1.0",
+    "standard-version": "^5.0.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
