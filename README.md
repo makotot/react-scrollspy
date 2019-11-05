@@ -65,6 +65,10 @@ HTML tag or React Component for Scrollspy component if you want to use other tha
 
 Style attribute to be passed to the generated &lt;ul/&gt; element [optional].
 
+### `className={ String }`
+
+ClassName attribute to be passed to the generated &lt;ul/&gt; element [optional].
+
 ### `offset={ Number }`
 
 Offset value that adjusts to determine the elements are in the viewport [optional].
