@@ -243,7 +243,7 @@ export default class Scrollspy extends React.Component {
     this.offEvent()
   }
 
-  componentWillReceiveProps () {
+  UNSAFE_componentWillReceiveProps () {
     this._initFromProps()
   }
 
