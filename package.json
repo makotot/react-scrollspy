@@ -2,7 +2,7 @@
   "name": "react-scrollspy",
   "version": "3.4.1",
   "description": "react scrollspy component",
-  "main": "./lib/Scrollspy.js",
+  "main": "./lib/scrollspy.js",
   "files": [
     "README.md",
     "lib/scrollspy.js",
