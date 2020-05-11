@@ -17,7 +17,6 @@
     "build": "NODE_ENV=production ./node_modules/.bin/babel ./src/js/lib --out-dir ./lib",
     "test": "NODE_ENV=test ./node_modules/.bin/ava __test__/*.js --verbose",
     "prepublish": "yarn run build",
-    "prepare": "yarn run build",
     "deploy": "yarn run docs && gh-pages -d ./dist",
     "release": "standard-version"
   },
