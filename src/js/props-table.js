@@ -26,6 +26,10 @@ const PropTable = () => (
         <td className="table__data">HTML tag for Scrollspy component if you want to use other than <code>{'<ul/>'}</code> [optional].</td>
       </tr>
       <tr>
+        <td className="table__data">id</td>
+        <td className="table__data">id attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
+      </tr>
+      <tr>
         <td className="table__data">style</td>
         <td className="table__data">Style attribute to be passed to the generated <code>{'<ul/>'}</code> element [optional].</td>
       </tr>
