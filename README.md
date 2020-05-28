@@ -77,6 +77,10 @@ Name of the element of scrollable container that can be used with querySelector 
 
 Function to be executed when the active item has been updated [optional].
 
+### Other props
+
+All other props are passed through to the underlying HTML tag or React Component specified in the `componentTag` prop [optional].
+
 ## Methods
 
 ### `offEvent`

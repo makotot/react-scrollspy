@@ -254,6 +254,7 @@ export default class Scrollspy extends React.Component {
       className,
       scrolledPastClassName,
       style,
+      ...passThroughProps
     } = this.props
     let counter = 0
     const items = React.Children.map(children, (child, idx) => {
@@ -281,7 +282,7 @@ export default class Scrollspy extends React.Component {
     })
 
     return (
-      <Tag className={ itemClass } style={ style }>
+      <Tag className={ itemClass } style={ style } { ...passThroughProps }>
         { items }
       </Tag>
     )
