@@ -50,7 +50,7 @@ export default class Scrollspy extends React.Component {
 
     // manually bind as ES6 does not apply this
     // auto binding as React.createClass does
-    this._handleSpy = this._handleSpy.bind(this)
+    this._handleSpy = throttle(this._spy.bind(this), 100);
   }
 
   _initSpyTarget (items) {
@@ -206,10 +206,6 @@ export default class Scrollspy extends React.Component {
     }
 
     this.props.onUpdate(this.state.targetItems[this.state.inViewState.indexOf(true)])
-  }
-
-  _handleSpy () {
-    throttle(this._spy(), 100)
   }
 
   _initFromProps () {
