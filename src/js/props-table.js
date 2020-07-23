@@ -23,7 +23,7 @@ const PropTable = () => (
       </tr>
       <tr>
         <td className="table__data">componentTag</td>
-        <td className="table__data">HTML tag for Scrollspy component if you want to use other than <code>{'<ul/>'}</code> [optional].</td>
+        <td className="table__data">HTML tag or React Component type for Scrollspy component if you want to use something other than <code>{'<ul/>'}</code> [optional].</td>
       </tr>
       <tr>
         <td className="table__data">style</td>

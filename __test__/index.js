@@ -31,3 +31,9 @@ test('renders expected html tag', (t) => {
   t.is(customTag.type(), 'div')
 })
 
+test('renders expected React Component', (t) => {
+  const MyComponent = () => {}
+  const customTag = shallow(<Scrollspy componentTag={MyComponent}></Scrollspy>)
+
+  t.is(customTag.type(), MyComponent)
+})
