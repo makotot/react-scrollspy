@@ -212,8 +212,8 @@ export default class Scrollspy extends React.Component {
     throttle(this._spy(), 100)
   }
 
-  _initFromProps () {
-    const targetItems = this._initSpyTarget(this.props.items)
+  _initFromProps (props) {
+    const targetItems = this._initSpyTarget(props.items)
 
     this.setState({
       targetItems,
@@ -235,7 +235,7 @@ export default class Scrollspy extends React.Component {
   }
 
   componentDidMount () {
-    this._initFromProps()
+    this._initFromProps(this.props)
     this.onEvent()
   }
 
@@ -243,8 +243,8 @@ export default class Scrollspy extends React.Component {
     this.offEvent()
   }
 
-  UNSAFE_componentWillReceiveProps () {
-    this._initFromProps()
+  getDerivedStateFromProps (props) {
+    this._initFromProps(props)
   }
 
   render () {
