@@ -190,6 +190,9 @@ export default class Scrollspy extends React.Component {
 
   _spy (targets) {
     const elemensViewState = this._getElemsViewState(targets)
+    if (elemensViewState.viewStatusList.indexOf(true) < 0) {
+      return;
+    }    
     const currentStatuses = this.state.inViewState
 
     this.setState({
