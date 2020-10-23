@@ -64,7 +64,7 @@
     "postcss-loader": "^3.0.0",
     "react-addons-perf": "^15.4.2",
     "react-highlight": "^0.10.0",
-    "react-test-renderer": "^15.6.1",
+    "react-test-renderer": "^17.0.1",
     "sass-loader": "^7.1.0",
     "standard-version": "^5.0.1",
     "style-loader": "^0.23.1",
