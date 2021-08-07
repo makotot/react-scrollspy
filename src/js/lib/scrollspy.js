@@ -20,6 +20,7 @@ export default class Scrollspy extends React.Component {
       items: PropTypes.arrayOf(PropTypes.string).isRequired,
       currentClassName: PropTypes.string.isRequired,
       scrolledPastClassName: PropTypes.string,
+      id: PropTypes.string,
       style: PropTypes.object,
       componentTag: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
       offset: PropTypes.number,
@@ -32,6 +33,7 @@ export default class Scrollspy extends React.Component {
     return {
       items: [],
       currentClassName: '',
+      id: '',
       style: {},
       componentTag: 'ul',
       offset: 0,
@@ -253,6 +255,7 @@ export default class Scrollspy extends React.Component {
       children,
       className,
       scrolledPastClassName,
+      id,
       style,
     } = this.props
     let counter = 0
@@ -281,7 +284,7 @@ export default class Scrollspy extends React.Component {
     })
 
     return (
-      <Tag className={ itemClass } style={ style }>
+      <Tag className={ itemClass } id={ id } style={ style }>
         { items }
       </Tag>
     )

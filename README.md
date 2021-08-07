@@ -63,6 +63,10 @@ Class name that apply to the navigation elements that have been scrolled past [o
 
 HTML tag or React Component type for Scrollspy component if you want to use something other than `ul` [optional].
 
+### `id={ String }`
+
+id attribute to be passed to the generated &lt;ul/&gt; element [optional].
+
 ### `style={ Object }`
 
 Style attribute to be passed to the generated &lt;ul/&gt; element [optional].
