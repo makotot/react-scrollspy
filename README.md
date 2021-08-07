@@ -1,3 +1,7 @@
+# DEPRECATED - no longer actively maintained.
+
+Please use [GhostUI](https://github.com/makotot/GhostUI) instead.
+
 # react-scrollspy
 
 [![npm version](https://img.shields.io/npm/v/react-scrollspy.svg?style=flat-square)](https://www.npmjs.com/package/react-scrollspy)
@@ -16,7 +20,6 @@
 ```sh
 $ npm i react-scrollspy
 ```
-
 
 ## Usage
 
@@ -41,7 +44,6 @@ import Scrollspy from 'react-scrollspy'
 
 </div>
 ```
-
 
 ## Props
 
@@ -87,7 +89,6 @@ Remove event listener of scrollspy.
 
 Add event listener of scrollspy.
 
-
 ## Development
 
 ```sh
@@ -100,7 +101,6 @@ $ npm run start
 ## Contributing
 
 Pull requests and [reporting an issue](https://github.com/makotot/react-scrollspy/issues/new) are always welcome :)
-
 
 ## License
 
